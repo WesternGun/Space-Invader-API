@@ -1,6 +1,7 @@
 package io.westerngun.spaceinvaderapi.controller;
 
 import io.westerngun.spaceinvaderapi.dto.Move;
+import io.westerngun.spaceinvaderapi.dto.Name;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,8 +30,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/name", method = RequestMethod.GET)
-    public String name() {
-        return "{\"name\": \"WesternGun\", \"email\":\"westernguncyber@gmail.com\"}";
+    public Name name() {
+        return new Name("WesternGun", "yangliang.ding@ext.privalia.com");
     }
 
     @RequestMapping(value = "/move", method = RequestMethod.GET)
