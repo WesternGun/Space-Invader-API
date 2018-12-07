@@ -10,4 +10,9 @@ public class MainController {
     public String root() {
         return "Westerngun wants to get the prize!";
     }
+
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    public String root() {
+        return "Westerngun wants to get the prize!";
+    }
 }

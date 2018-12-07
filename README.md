@@ -67,9 +67,10 @@ Space Invaders tribute
 # API Documentation
 Players are simple REST APIs with two endpoints:
 
-`/name`: should provide basic information on a player. See Name Endpoint for more information.
-`/move`: will receive map information, and needs to reply with the next move for the player. See the Move Endpoint for more information.
-Name Endpoint
+ - `/name`: should provide basic information on a player. See Name Endpoint for more information.
+ - `/move`: will receive map information, and needs to reply with the next move for the player. See the Move Endpoint for more information.
+
+## Name Endpoint
 Your `/name` URL API will receive a POST request without body. Reply with JSON format indicating the name of the player or team and the contact email.
 
 Request format
