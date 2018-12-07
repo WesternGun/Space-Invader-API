@@ -6,6 +6,9 @@ The 2018 event of the Privalia Code Challenge is called Space Invaders Tribute! 
  - 50 points to kill a space invader.
  - -25 points when killed by another player or invader.
 
+# Create a game to test:
+[Click here to create a game](http://code-challenge-2018.privalia.com/game/create)
+
 
 # Rules
 The idea is quite simple: You have to create a REST API to move a starship across a random generated board. In this board there are also a number of space invaders and the other players' starships. You could move or fire at any direction (up, down, left or right), but you will have limited shots.
