@@ -25,6 +25,7 @@ repositories {
 
 
 dependencies {
+    compileOnly('org.projectlombok:lombok:1.18.4')
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 //	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation('org.springframework.boot:spring-boot-starter-web')
