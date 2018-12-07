@@ -1,12 +1,16 @@
 package io.westerngun.spaceinvaderapi.controller;
 
+import io.westerngun.spaceinvaderapi.dto.Map;
 import io.westerngun.spaceinvaderapi.dto.Move;
 import io.westerngun.spaceinvaderapi.dto.Name;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 public class MainController {
     /**
@@ -35,7 +39,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/move", method = RequestMethod.POST)
-    public Move move() {
+    public Move move(@RequestBody Map map) {
+        log.info("Received JSON: {}", map);
         return new Move(MR);
     }
 }
