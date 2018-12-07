@@ -1,6 +1,7 @@
 package io.westerngun.spaceinvaderapi.controller;
 
 import io.westerngun.spaceinvaderapi.dto.Move;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,8 @@ public class MainController {
     private static final String FL = "fire-left";
     private static final String FR = "fire-right";
 
+    @Value("{$move.strategy}")
+    private String strategy;
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome() {
@@ -32,6 +35,6 @@ public class MainController {
 
     @RequestMapping(value = "/move", method = RequestMethod.GET)
     public Move move() {
-        return new Move("something");
+        return new Move(FU);
     }
 }
