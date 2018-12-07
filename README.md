@@ -46,22 +46,22 @@ The required programming level to participate is high.
 Space Invaders tribute
 
  - Join
-To join the challenge you'll need to upload your API to your own Internet server.
-Your API has to be accessible from the game server through an URL or IP address.
-No support will be given to create the API or upload it to a server.
+     - To join the challenge you'll need to upload your API to your own Internet server.
+     - Your API has to be accessible from the game server through an URL or IP address.
+     - No support will be given to create the API or upload it to a server.
 
  - Dates
-November 30th to December 13rd: Develop your API.
-December 14th at 13:00h: Competition at Privalia training room.
+     - November 30th to December 13rd: Develop your API.
+     - December 14th at 13:00h: Competition at Privalia training room.
 
  - Prizes
    - A t-shirt for all participants.
    - Three special prizes for the bests.
 
  - Competition format
-The Competition format will depend on the number of participants.
-The idea is to do some semifinals to discard non-optimized APIs and then a big final.
-The game parameters (size of the board, number of invaders, etc) will be revealed the day of the competition.
+     - The Competition format will depend on the number of participants.
+     - The idea is to do some semifinals to discard non-optimized APIs and then a big final.
+     - The game parameters (size of the board, number of invaders, etc) will be revealed the day of the competition.
 
 
 # API Documentation
