@@ -29,12 +29,12 @@ public class MainController {
         return "Westerngun wants to get the prize!";
     }
 
-    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    @RequestMapping(value = "/name", method = RequestMethod.POST)
     public Name name() {
         return new Name("WesternGun", "yangliang.ding@ext.privalia.com");
     }
 
-    @RequestMapping(value = "/move", method = RequestMethod.GET)
+    @RequestMapping(value = "/move", method = RequestMethod.POST)
     public Move move() {
         return new Move(FU);
     }
