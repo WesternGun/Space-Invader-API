@@ -1,0 +1,3112 @@
+[{
+    "id": 166848,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": true
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 1,
+            "x": 24,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:42:58 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166849,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 3,
+            "x": 22,
+            "neutral": true
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": true
+        }, {
+            "y": 1,
+            "x": 25,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:42:59 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166850,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 4,
+            "x": 22,
+            "neutral": true
+        }, {
+            "y": 5,
+            "x": 24,
+            "neutral": true
+        }, {
+            "y": 1,
+            "x": 26,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:42:59 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166851,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 22,
+            "neutral": true
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": true
+        }, {
+            "y": 1,
+            "x": 25,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:01 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166852,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 22,
+            "neutral": true
+        }, {
+            "y": 6,
+            "x": 23,
+            "neutral": true
+        }, {
+            "y": 1,
+            "x": 24,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:02 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166853,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 24,
+            "neutral": false
+        }, {
+            "y": 1,
+            "x": 25,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:02 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166854,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 1,
+            "x": 24,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:04 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166855,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": true
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 1,
+            "x": 25,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:05 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166856,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 23,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:06 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166857,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:07 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166858,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 25,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:08 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166859,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 26,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:09 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166860,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 24,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 27,
+            "neutral": true
+        }, {
+            "y": 6,
+            "x": 27,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:10 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166861,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 24,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 28,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 27,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:11 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166862,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": true
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 27,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 26,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:12 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166863,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 27,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 25,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:13 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166864,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 24,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:14 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166865,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:15 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166866,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 5,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 24,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:16 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166867,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 6,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 24,
+            "neutral": false
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:17 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166868,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 4,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 23,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 24,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 22,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:18 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166869,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": true
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 3,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 6,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 25,
+            "neutral": false
+        }, {
+            "y": 4,
+            "x": 22,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:18 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}, {
+    "id": 166870,
+    "gameUuid": "3dbdd9b9-19ea-4149-a1e7-713a3c7be773",
+    "playerUuid": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/move",
+    "requestHeaders": {
+        "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+        "game": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da"
+        },
+        "player": {
+            "id": "8d167ba7-e51d-497b-8d30-1c523aff44da",
+            "name": "WesternGun",
+            "position": {
+                "y": 2,
+                "x": 26
+            },
+            "previous": {
+                "y": 2,
+                "x": 26
+            },
+            "area": {
+                "y1": 0,
+                "x1": 22,
+                "y2": 6,
+                "x2": 29
+            },
+            "fire": false
+        },
+        "board": {
+            "size": {
+                "height": 15,
+                "width": 30
+            },
+            "walls": [{
+                "y": 0,
+                "x": 22
+            }, {
+                "y": 0,
+                "x": 23
+            }, {
+                "y": 0,
+                "x": 24
+            }, {
+                "y": 0,
+                "x": 25
+            }, {
+                "y": 0,
+                "x": 26
+            }, {
+                "y": 0,
+                "x": 27
+            }, {
+                "y": 0,
+                "x": 28
+            }, {
+                "y": 0,
+                "x": 29
+            }, {
+                "y": 1,
+                "x": 23
+            }, {
+                "y": 1,
+                "x": 27
+            }, {
+                "y": 1,
+                "x": 29
+            }, {
+                "y": 2,
+                "x": 22
+            }, {
+                "y": 2,
+                "x": 23
+            }, {
+                "y": 2,
+                "x": 29
+            }, {
+                "y": 3,
+                "x": 23
+            }, {
+                "y": 3,
+                "x": 27
+            }, {
+                "y": 3,
+                "x": 29
+            }, {
+                "y": 4,
+                "x": 23
+            }, {
+                "y": 4,
+                "x": 24
+            }, {
+                "y": 4,
+                "x": 26
+            }, {
+                "y": 4,
+                "x": 27
+            }, {
+                "y": 4,
+                "x": 28
+            }, {
+                "y": 4,
+                "x": 29
+            }, {
+                "y": 5,
+                "x": 23
+            }, {
+                "y": 5,
+                "x": 29
+            }, {
+                "y": 6,
+                "x": 29
+            }]
+        },
+        "players": [],
+        "invaders": [{
+            "y": 4,
+            "x": 22,
+            "neutral": false
+        }, {
+            "y": 5,
+            "x": 26,
+            "neutral": false
+        }, {
+            "y": 3,
+            "x": 22,
+            "neutral": true
+        }]
+    },
+    "responseCode": 200,
+    "responseHeaders": ["HTTP\/1.1 200 ", "Server: Cowboy", "Connection: keep-alive", "Content-Type: application\/json;charset=UTF-8", "Transfer-Encoding: chunked", "Date: Fri, 07 Dec 2018 22:43:20 GMT", "Via: 1.1 vegur"],
+    "responseBody": {
+        "move": "fire-up"
+    },
+    "errorMessage": null
+}]

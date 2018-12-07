@@ -36,6 +36,6 @@ public class MainController {
 
     @RequestMapping(value = "/move", method = RequestMethod.POST)
     public Move move() {
-        return new Move(FU);
+        return new Move(MR);
     }
 }
