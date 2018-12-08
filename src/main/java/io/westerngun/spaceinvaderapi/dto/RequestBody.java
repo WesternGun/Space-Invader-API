@@ -9,10 +9,9 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Map implements Serializable {
-    private Long id;
-    private RequestBody requestBody;
-    private String gameUuid;
-
-
+public class RequestBody implements Serializable {
+    private Player player;
+    private Board board;
+    private Player[] players;
+    private Invader[] invaders;
 }
