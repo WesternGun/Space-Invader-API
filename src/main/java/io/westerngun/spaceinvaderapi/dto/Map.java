@@ -10,6 +10,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Map implements Serializable {
+    private Long id;
+    private String gameUuid;
     private Player player;
     private Board board;
     private Player[] players;
