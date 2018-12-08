@@ -41,6 +41,7 @@ public class MainController {
     @RequestMapping(value = "/move", method = RequestMethod.POST)
     public Move move(@RequestBody Map map) {
         log.info("Received JSON: {}", map);
+        log.info("We are performing: {}", MR);
         return new Move(MR);
     }
 }

@@ -9,6 +9,11 @@ spring:
     deserialization:
       FAIL_ON_UNKNOWN_PROPERTIES: false
 
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN
+    org.hibernate: ERROR
 
 move:
-  strategy: fire-up
+  strategy: offensive #(always attack) | defensive(stay and attack) | swift(dodge always when revive)
