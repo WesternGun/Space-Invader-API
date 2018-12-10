@@ -116,7 +116,7 @@ public class MainController {
             i.setPosition(new Position(i.getX(), i.getY()));
         }
 
-        //log.info("In the visible area we have {} invaders. ", invaders.length);
+        //info("In the visible area we have {} invaders. ", invaders.length);
         //log.info("In the visible area we have {} players. ", players.length);
 
         // calculate if we are dead/blocked. (necessary?)
@@ -137,33 +137,39 @@ public class MainController {
         //
         if (fire) { // we can fire!
             // killing players first
-            if (isAligned(nearestEnemy.getPosition())) {
-                if (!someWallIsBlocking(nearestEnemy.getPosition())) {
-                    return new Move(fireAt(nearestEnemy.getPosition()));
-                } else { // cannot fire enemy, so we search invader
-                    if (isAligned(nearestInvader.getPosition())) {
-                        if (nearestInvader.getNeutral()) {
-                            if (isNeighbor(nearestInvader.getPosition())) {
-                                return new Move(moveTowards(nearestInvader.getPosition()));
-                            } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
-                                return new Move(fireAt(nearestInvader.getPosition())); // TODO: neutral can fire?
-                            } else {
+            if (nearestEnemy != null) {
+                if (isAligned(nearestEnemy.getPosition())) {
+                    if (!someWallIsBlocking(nearestEnemy.getPosition())) {
+                        return new Move(fireAt(nearestEnemy.getPosition()));
+                    } else { // cannot fire enemy, so we search invader
+                        if (nearestInvader != null) {
+                            if (isAligned(nearestInvader.getPosition())) {
+                                if (nearestInvader.getNeutral()) {
+                                    if (isNeighbor(nearestInvader.getPosition())) {
+                                        return new Move(moveTowards(nearestInvader.getPosition()));
+                                    } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
+                                        return new Move(fireAt(nearestInvader.getPosition())); // TODO: neutral can fire?
+                                    } else {
 
-                                // cannot fire because wall is blocking, so we begin to move
+                                        // cannot fire because wall is blocking, so we begin to move
+                                        return moveAtWill();
+                                    }
+                                } else {
+                                    return new Move(fireAt(nearestInvader.getPosition()));
+                                }
+                            } else {
+                                // invader not aligned, move at will
                                 return moveAtWill();
                             }
                         } else {
-                            return new Move(fireAt(nearestInvader.getPosition()));
+                            return moveAtWill();
                         }
-
-                    } else {
-                        // invader not aligned, move at will
-                        return moveAtWill();
                     }
                 }
+
+            } else {
+                return moveAtWill();
             }
-
-
         } else {
             return moveAtWill();
         }
@@ -171,7 +177,9 @@ public class MainController {
         return new Move(MR);
     }
     public Player findNearestPlayer(Player[] visiblePlayers) {
-        if (visiblePlayers.length == 1) {
+        if (visiblePlayers.length == 0) {
+            return null;
+        } else if (visiblePlayers.length == 1) {
             return visiblePlayers[0];
         } else {
             int[] shortestDimension = new int[visiblePlayers.length];
@@ -193,7 +201,9 @@ public class MainController {
         }
     }
     private Invader findNearestInvader(Invader[] visibleInvaders) {
-        if (visibleInvaders.length == 1) {
+        if (visibleInvaders.length == 0) {
+            return null;
+        } else if (visibleInvaders.length == 1) {
             return visibleInvaders[0];
         } else {
             int[] shortestDimension = new int[visibleInvaders.length];
