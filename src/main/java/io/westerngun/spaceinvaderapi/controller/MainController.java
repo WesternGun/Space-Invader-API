@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -44,7 +43,7 @@ public class MainController {
 
     private static final String WAIT = "wait";
 
-    private io.westerngun.spaceinvaderapi.dto.RequestBody body;
+    private io.westerngun.spaceinvaderapi.dto.RequestBody requestBody;
     private Player player;
     private Position me;
     private Previous previous;
@@ -101,22 +100,22 @@ public class MainController {
         allFourDirections.add(ML);
         allFourDirections.add(MU);
         allFourDirections.add(MD);
-        body = map.getRequestBody();
+        requestBody = map.getRequestBody();
 
-        player = body.getPlayer();
-        fire = body.getPlayer().getFire();
+        player = requestBody.getPlayer();
+        fire = requestBody.getPlayer().getFire();
         me = player.getPosition();
         previous = player.getPrevious();
         area = player.getArea();
 
-        board = body.getBoard(); // the board size and the walls in the area
+        board = requestBody.getBoard(); // the board size and the walls in the area
         if (size == null) {
             size = board.getSize(); // this won't change
         }
         walls = board.getWalls(); // visible area walls, not all the walls
 
-        invaders = body.getInvaders();
-        players = body.getPlayers();
+        invaders = requestBody.getInvaders();
+        players = requestBody.getPlayers();
         for (Invader i: invaders) {
             i.setPosition(new Position(i.getX(), i.getY()));
         }
