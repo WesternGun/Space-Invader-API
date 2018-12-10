@@ -116,13 +116,13 @@ public class MainController {
             i.setPosition(new Position(i.getX(), i.getY()));
         }
 
-        log.info("In the visible area we have {} invaders. ", invaders.length);
-        log.info("In the visible area we have {} players. ", players.length);
+        //log.info("In the visible area we have {} invaders. ", invaders.length);
+        //log.info("In the visible area we have {} players. ", players.length);
 
         // calculate if we are dead/blocked. (necessary?)
         if (me.equals(previous)) {
             stopWatch ++; // we have stopped for 1 round;
-            log.info("We may be shot, do something!");
+            //log.info("We may be shot, do something!");
             doSomething();
         } else {
             stopWatch = 0; // clear
