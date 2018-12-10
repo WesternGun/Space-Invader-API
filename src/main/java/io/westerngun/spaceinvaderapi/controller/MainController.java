@@ -96,7 +96,11 @@ public class MainController {
     public Move move(@RequestBody Map map) {
         //log.info("Received JSON: {}", map);
         //log.info("We are performing: {}", MR);
-        allFourDirections = new ArrayList<>(Arrays.asList(new String[] {MR, ML, MD, MU}));
+        allFourDirections = new ArrayList<>();
+        allFourDirections.add(MR);
+        allFourDirections.add(ML);
+        allFourDirections.add(MU);
+        allFourDirections.add(MD);
         body = map.getRequestBody();
 
         player = body.getPlayer();
