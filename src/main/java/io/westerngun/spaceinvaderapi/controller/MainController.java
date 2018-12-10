@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,6 +40,9 @@ public class MainController {
     private static final String FL = "fire-left";
     private static final String FR = "fire-right";
 
+    private List<String> allFourDirections;
+
+    private static final String WAIT = "wait";
 
     private io.westerngun.spaceinvaderapi.dto.RequestBody body;
     private Player player;
@@ -93,7 +96,7 @@ public class MainController {
     public Move move(@RequestBody Map map) {
         //log.info("Received JSON: {}", map);
         //log.info("We are performing: {}", MR);
-
+        allFourDirections = new ArrayList<>(Arrays.asList(new String[] {MR, ML, MD, MU}));
         body = map.getRequestBody();
 
         player = body.getPlayer();
@@ -102,19 +105,24 @@ public class MainController {
         previous = player.getPrevious();
         area = player.getArea();
 
-        board = body.getBoard();
-        size = board.getSize();
-        walls = board.getWalls();
+        board = body.getBoard(); // the board size and the walls in the area
+        if (size == null) {
+            size = board.getSize(); // this won't change
+        }
+        walls = board.getWalls(); // visible area walls, not all the walls
 
         invaders = body.getInvaders();
         players = body.getPlayers();
+        for (Invader i: invaders) {
+            i.setPosition(new Position(i.getX(), i.getY()));
+        }
+        for (Player p: players) {
+            p.setPosition(new Position(p.getX(), p.getY()));
+        }
 
         nearestEnemy = findNearestPlayer(players);
         nearestInvader = findNearestInvader(invaders);
 
-        for (Invader i: invaders) {
-            i.setPosition(new Position(i.getX(), i.getY()));
-        }
 
         //info("In the visible area we have {} invaders. ", invaders.length);
         //log.info("In the visible area we have {} players. ", players.length);
@@ -143,39 +151,53 @@ public class MainController {
                         return new Move(fireAt(nearestEnemy.getPosition()));
                     } else { // cannot fire enemy, so we search invader
                         if (nearestInvader != null) {
-                            if (isAligned(nearestInvader.getPosition())) {
-                                if (nearestInvader.getNeutral()) {
-                                    if (isNeighbor(nearestInvader.getPosition())) {
-                                        return new Move(moveTowards(nearestInvader.getPosition()));
-                                    } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
-                                        return new Move(fireAt(nearestInvader.getPosition())); // TODO: neutral can fire?
-                                    } else {
-
-                                        // cannot fire because wall is blocking, so we begin to move
-                                        return moveAtWill();
-                                    }
-                                } else {
-                                    return new Move(fireAt(nearestInvader.getPosition()));
-                                }
-                            } else {
-                                // invader not aligned, move at will
-                                return moveAtWill();
-                            }
+                            return shootInvader();
                         } else {
                             return moveAtWill();
                         }
                     }
+                } else {
+                    String howToMove = moveTowardsPlayer(nearestEnemy);
+                    if (howToMove.contains(WAIT)) {
+                        // we cannot move towards one direction
+                        String dontGo = howToMove.split(" ")[1];
+                        allFourDirections.remove(dontGo);
+                        return moveAtWill();
+                    } else {
+                        return new Move(howToMove);
+                    }
                 }
-
+            } else if (nearestInvader != null) {
+                return shootInvader();
             } else {
                 return moveAtWill();
             }
         } else {
             return moveAtWill();
         }
-
-        return new Move(MR);
     }
+
+    private Move shootInvader() {
+        if (isAligned(nearestInvader.getPosition())) {
+            if (nearestInvader.getNeutral()) {
+                if (isNeighbor(nearestInvader.getPosition())) {
+                    return new Move(moveTowards(nearestInvader.getPosition()));
+                } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
+                    return new Move(fireAt(nearestInvader.getPosition())); // TODO: neutral can fire?
+                } else {
+                    // cannot fire because wall is blocking, so we begin to move
+                    return moveAtWill();
+                }
+            } else {
+                return new Move(fireAt(nearestInvader.getPosition()));
+            }
+        } else {
+            // invader not aligned, move at will
+            return moveAtWill();
+        }
+    }
+
+
     public Player findNearestPlayer(Player[] visiblePlayers) {
         if (visiblePlayers.length == 0) {
             return null;
@@ -230,32 +252,42 @@ public class MainController {
      * Move at will(but preferablly go to the center and avoid walls.
      */
     public Move moveAtWill() {
-        // 1. don't move towards wall
-        ArrayList<String> possibleMove = checkNearWalls();
-        if (possibleMove.size() == 1) {
+        // 1. don't move towards wall, and pay attention to the possible direction
+        // cross-join these two lists
+        ArrayList<String> possibleMovesInWall = checkNearWalls();
+        ArrayList<String> possibleMoves = new ArrayList<>();
+
+        for (String d: allFourDirections) {
+            for (String ds: possibleMovesInWall)
+            if (d.equals(ds)) {
+                possibleMoves.add(d);
+            }
+        }
+
+        if (possibleMoves.size() == 1) {
             return new Move(deadEnd.getSolution());
-        } else if (possibleMove.size() == 2) {
-            if (possibleMovesCountered(possibleMove)) {
+        } else if (possibleMoves.size() == 2) {
+            if (possibleMovesCountered(possibleMoves)) {
                 if (deadEnd != null) {
                     return new Move(deadEnd.getSolution());
                 } else {
-                    return new Move(possibleMove.get(0)); // TODO
+                    return new Move(possibleMoves.get(0)); // TODO
                 }
             } else if (deadEnd != null){
-                return new Move(getAroundCorner(possibleMove));
+                return new Move(getAroundCorner(possibleMoves));
             } else {
-                return new Move(possibleMove.get(0)); // TODO
+                return new Move(possibleMoves.get(0)); // TODO
             }
-        } else if (possibleMove.size() == 3 || possibleMove.size() == 4) { // free to move
+        } else if (possibleMoves.size() == 3 || possibleMoves.size() == 4) { // free to move
             if (deadEnd != null) {
                 deadEnd = null;
             }
             // not aligned with the nearestPlayer enemy; depending on the x/y axis shortest distance we move;
 
             // TODO: preserve the last move to not to going back
-            return new Move(possibleMove.get(randomNumber(0, possibleMove.size())));
+            return new Move(possibleMoves.get(randomNumber(0, possibleMoves.size())));
         }
-        return new Move(possibleMove.get(randomNumber(0, possibleMove.size())));
+        return new Move(possibleMoves.get(randomNumber(0, possibleMoves.size())));
     }
 
     /**
@@ -470,15 +502,47 @@ public class MainController {
                 }
             } else {
                 if (xDistance == 1) {
-                    // do nothing, wait
-                    return "nothing";
-                } else if (xDistance == 3) {
-                    // TODO
+                    // do nothing, wait; but calculate the possible move
+                    if (isAtLeft(player)) {
+                        return WAIT + " " + MR;
+                    } else {
+                        return WAIT + " " + ML;
+                    }
+
+                } else { // xdistance == 3, save to move
+                    // TODO: observe the enemy's strategy
+                    if (isAtLeft(player)) {
+                        return MR;
+                    } else {
+                        return ML;
+                    }
+                }
+            }
+        } else { // move on y axis
+            if (yDistance % 2 == 0) {
+                if (me.getY() < player.getPosition().getY()) {
+                    return MD;
+                } else {
+                    return MU;
+                }
+            } else {
+                if (yDistance == 1) {
+                    // do nothing, wait; but calculate the possible move
+                    if (isHigherThan(player)) {
+                        return WAIT + " " + MD;
+                    } else {
+                        return WAIT + " " + MU;
+                    }
+                } else { // ydistance == 3, save to move
+                    // TODO: observe the enemy's strategy
+                    if (isHigherThan(player)) {
+                        return MD;
+                    } else {
+                        return MU;
+                    }
                 }
             }
         }
-
-        return "nothing"; // TODO
     }
 
 
@@ -487,5 +551,30 @@ public class MainController {
      */
     private void doSomething() {
 
+    }
+
+    private boolean isHigherThan(Player player) {
+        return me.getY() < player.getY();
+    }
+    private boolean isLowerThen(Player player) {
+        return me.getY() > player.getY();
+    }
+
+    /**
+     * If my position is at left of enemy
+     * @param player
+     * @return
+     */
+    private boolean isAtLeft(Player player) {
+        return me.getX() < player.getX();
+    }
+
+    /**
+     * If my position is at right of enemy
+     * @param player
+     * @return
+     */
+    private boolean isAtRight(Player player) {
+        return me.getX() > player.getX();
     }
 }

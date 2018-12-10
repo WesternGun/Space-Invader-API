@@ -12,6 +12,8 @@ import java.io.Serializable;
 public class Player implements Serializable {
     private String id;
     private String name;
+    private int x;
+    private int y;
     private Position position;
     private Area area;
     private Previous previous;
