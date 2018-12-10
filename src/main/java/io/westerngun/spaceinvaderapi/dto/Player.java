@@ -17,4 +17,8 @@ public class Player implements Serializable {
     private Previous previous;
 
     private Boolean fire;
+
+    public Player(Position position) {
+        this.position = position;
+    }
 }

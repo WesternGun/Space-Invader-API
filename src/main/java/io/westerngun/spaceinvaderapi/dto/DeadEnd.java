@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
+/**
+ * Class to help the ship to get out of dead end;
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Invader implements Serializable {
-    private int x;
-    private int y;
-    private Boolean neutral;
-    private Position position;
+public class DeadEnd {
+    private Position deadEndPosition;
+    private String solution;
 }
