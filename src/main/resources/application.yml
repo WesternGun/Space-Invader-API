@@ -17,7 +17,7 @@ logging:
     org.springframework: WARN
     org.hibernate: ERROR
     org.springframework.web.servlet.mvc.method.annotation: TRACE
-    
+    org.springframework.web.servlet: DEBUG
 
 move:
   strategy: offensive #(always attack) | defensive(stay and attack) | swift(dodge always when revive)
