@@ -16,7 +16,8 @@ logging:
     root: INFO
     org.springframework: WARN
     org.hibernate: ERROR
-    com.fasterxml.jackson: DEBUG
+    org.springframework.web.servlet.mvc.method.annotation: TRACE
+    
 
 move:
   strategy: offensive #(always attack) | defensive(stay and attack) | swift(dodge always when revive)
