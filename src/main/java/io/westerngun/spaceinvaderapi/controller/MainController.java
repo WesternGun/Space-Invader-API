@@ -4,6 +4,7 @@ import io.westerngun.spaceinvaderapi.dto.Area;
 import io.westerngun.spaceinvaderapi.dto.Board;
 import io.westerngun.spaceinvaderapi.dto.Body;
 import io.westerngun.spaceinvaderapi.dto.DeadEnd;
+import io.westerngun.spaceinvaderapi.dto.Game;
 import io.westerngun.spaceinvaderapi.dto.Invader;
 import io.westerngun.spaceinvaderapi.dto.Map;
 import io.westerngun.spaceinvaderapi.dto.Move;
@@ -44,21 +45,21 @@ public class MainController {
 
     private static final String WAIT = "wait";
 
-    private Body requestBody;
+    private Game game;
     private Player player;
     private Position me;
-    private Previous previous;
+    private Position previous;
     private Area area;
     private boolean fire;
 
     private Board board;
     private Size size;
-    private Wall[] walls;
-    private Player[] players;
+    private Position[] walls;
+    private Position[] players;
     private Invader[] invaders;
 
     private int stopWatch = 0;
-    private Player nearestEnemy;
+    private Position nearestEnemy;
     private Invader nearestInvader;
     private DeadEnd deadEnd;
 
@@ -93,35 +94,32 @@ public class MainController {
     }
 
     @RequestMapping(value = "/move", method = RequestMethod.POST)
-    public Move move(@RequestBody Map map) {
-        log.info("Received JSON: {}", map);
+    public Move move(@RequestBody Body body) {
+        log.info("Received JSON: {}", body);
         //log.info("We are performing: {}", MR);
         allFourDirections = new ArrayList<>();
         allFourDirections.add(MR);
         allFourDirections.add(ML);
         allFourDirections.add(MU);
         allFourDirections.add(MD);
-        requestBody = map.getRequestBody();
 
-        player = requestBody.getPlayer();
-        fire = requestBody.getPlayer().getFire();
+        game = body.getGame();
+        player = body.getPlayer();
+        fire = player.getFire();
         me = player.getPosition();
         previous = player.getPrevious();
         area = player.getArea();
 
-        board = requestBody.getBoard(); // the board size and the walls in the area
+        board = body.getBoard();
         if (size == null) {
             size = board.getSize(); // this won't change
         }
         walls = board.getWalls(); // visible area walls, not all the walls
 
-        invaders = requestBody.getInvaders();
-        players = requestBody.getPlayers();
+        invaders = body.getInvaders();
+        players = body.getPlayers();
         for (Invader i: invaders) {
             i.setPosition(new Position(i.getX(), i.getY()));
-        }
-        for (Player p: players) {
-            p.setPosition(new Position(p.getX(), p.getY()));
         }
 
         nearestEnemy = findNearestPlayer(players);
@@ -150,9 +148,9 @@ public class MainController {
         if (fire) { // we can fire!
             // killing players first
             if (nearestEnemy != null) {
-                if (isAligned(nearestEnemy.getPosition())) {
-                    if (!someWallIsBlocking(nearestEnemy.getPosition())) {
-                        return new Move(fireAt(nearestEnemy.getPosition()));
+                if (isAligned(nearestEnemy)) {
+                    if (!someWallIsBlocking(nearestEnemy)) {
+                        return new Move(fireAt(nearestEnemy));
                     } else { // cannot fire enemy, so we search invader
                         if (nearestInvader != null) {
                             return shootInvader();
@@ -202,7 +200,7 @@ public class MainController {
     }
 
 
-    public Player findNearestPlayer(Player[] visiblePlayers) {
+    public Position findNearestPlayer(Position[] visiblePlayers) {
         if (visiblePlayers.length == 0) {
             return null;
         } else if (visiblePlayers.length == 1) {
@@ -211,13 +209,13 @@ public class MainController {
             int[] shortestDimension = new int[visiblePlayers.length];
             Position pp = null;
             for (int i=0; i<visiblePlayers.length; i++) {
-                pp = visiblePlayers[i].getPosition();
+                pp = visiblePlayers[i];
                 shortestDimension[i] = Math.min(Math.abs(pp.getX()-me.getX()), Math.abs(pp.getY() - me.getY()));
             }
 
             // get the shortest of x and y axis distance, and order again; get the shortest one as [0]
             int another = 0;
-            Player nearest = null;
+            Position nearest = null;
             for (int i=shortestDimension.length-1; i>=1; i--) {
                 nearest = visiblePlayers[i];
                 visiblePlayers[i] = visiblePlayers[i-1];
@@ -393,7 +391,7 @@ public class MainController {
             for (int i=0; i<xFromMeToOther.length; i++) {
                 xFromMeToOther[i] = new Position(Math.min(position.getX(), me.getX()) + 1 + i, me.getY());
             }
-            for (Wall w: walls) {
+            for (Position w: walls) {
                 if (Arrays.asList(xFromMeToOther).contains(w)) {
                     return true;
                 }
@@ -404,7 +402,7 @@ public class MainController {
             for (int i=0; i<yFromMeToOther.length; i++) {
                 yFromMeToOther[i] = new Position(me.getX(), Math.min(position.getY(), me.getY()) + 1 + i);
             }
-            for (Wall w: walls) {
+            for (Position w: walls) {
                 if (Arrays.asList(yFromMeToOther).contains(w)) {
                     return true;
                 }
@@ -492,14 +490,14 @@ public class MainController {
      * @param player the other player
      * @return
      */
-    private String moveTowardsPlayer(Player player) {
-        int xDistance = Math.abs(me.getX() - player.getPosition().getX());
-        int yDistance = Math.abs(me.getY() - player.getPosition().getY());
+    private String moveTowardsPlayer(Position player) {
+        int xDistance = Math.abs(me.getX() - player.getX());
+        int yDistance = Math.abs(me.getY() - player.getY());
         if (xDistance < yDistance) {
             // move on x axis
             if (xDistance % 2 == 0) { // 2, 4
                 // we are save to move
-                if (me.getX() < player.getPosition().getX()) {
+                if (me.getX() < player.getX()) {
                     return MR;
                 } else {
                     return ML;
@@ -524,7 +522,7 @@ public class MainController {
             }
         } else { // move on y axis
             if (yDistance % 2 == 0) {
-                if (me.getY() < player.getPosition().getY()) {
+                if (me.getY() < player.getY()) {
                     return MD;
                 } else {
                     return MU;
@@ -557,10 +555,11 @@ public class MainController {
 
     }
 
-    private boolean isHigherThan(Player player) {
+    private boolean isHigherThan(Position player) {
         return me.getY() < player.getY();
     }
-    private boolean isLowerThen(Player player) {
+
+    private boolean isLowerThen(Position player) {
         return me.getY() > player.getY();
     }
 
@@ -569,7 +568,7 @@ public class MainController {
      * @param player
      * @return
      */
-    private boolean isAtLeft(Player player) {
+    private boolean isAtLeft(Position player) {
         return me.getX() < player.getX();
     }
 
@@ -578,7 +577,7 @@ public class MainController {
      * @param player
      * @return
      */
-    private boolean isAtRight(Player player) {
+    private boolean isAtRight(Position player) {
         return me.getX() > player.getX();
     }
 }

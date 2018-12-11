@@ -10,8 +10,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Body implements Serializable {
+    private Game game;
     private Player player;
     private Board board;
-    private Player[] players;
+    private Position[] players;
     private Invader[] invaders;
 }
