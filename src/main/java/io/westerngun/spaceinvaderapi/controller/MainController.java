@@ -2,6 +2,7 @@ package io.westerngun.spaceinvaderapi.controller;
 
 import io.westerngun.spaceinvaderapi.dto.Area;
 import io.westerngun.spaceinvaderapi.dto.Board;
+import io.westerngun.spaceinvaderapi.dto.Body;
 import io.westerngun.spaceinvaderapi.dto.DeadEnd;
 import io.westerngun.spaceinvaderapi.dto.Invader;
 import io.westerngun.spaceinvaderapi.dto.Map;
@@ -43,7 +44,7 @@ public class MainController {
 
     private static final String WAIT = "wait";
 
-    private io.westerngun.spaceinvaderapi.dto.RequestBody requestBody;
+    private Body requestBody;
     private Player player;
     private Position me;
     private Previous previous;

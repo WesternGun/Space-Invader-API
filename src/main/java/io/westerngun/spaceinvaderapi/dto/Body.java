@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RequestBody implements Serializable {
+public class Body implements Serializable {
     private Player player;
     private Board board;
     private Player[] players;

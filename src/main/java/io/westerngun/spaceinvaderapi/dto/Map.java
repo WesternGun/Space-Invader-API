@@ -11,8 +11,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Map implements Serializable {
     private Long id;
-    private RequestBody requestBody;
+    private Body requestBody;
     private String gameUuid;
-
-
 }
