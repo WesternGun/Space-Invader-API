@@ -21,3 +21,6 @@ logging:
 
 move:
   strategy: offensive #(always attack) | defensive(stay and attack) | swift(dodge always when revive)
+
+crowd:
+  threshold: 0.4 # percentage where we think the ship is surrounded and crowded

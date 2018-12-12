@@ -6,12 +6,10 @@ import io.westerngun.spaceinvaderapi.dto.Body;
 import io.westerngun.spaceinvaderapi.dto.DeadEnd;
 import io.westerngun.spaceinvaderapi.dto.Game;
 import io.westerngun.spaceinvaderapi.dto.Invader;
-import io.westerngun.spaceinvaderapi.dto.Map;
 import io.westerngun.spaceinvaderapi.dto.Move;
 import io.westerngun.spaceinvaderapi.dto.Name;
 import io.westerngun.spaceinvaderapi.dto.Player;
 import io.westerngun.spaceinvaderapi.dto.Position;
-import io.westerngun.spaceinvaderapi.dto.Previous;
 import io.westerngun.spaceinvaderapi.dto.Size;
 import io.westerngun.spaceinvaderapi.dto.Wall;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +61,13 @@ public class MainController {
     private Invader nearestInvader;
     private DeadEnd deadEnd;
 
+    private int areaSize;
+    private boolean goToCenter;
+
+    @Value("${crowd.threshold}")
+    private double crowdedThreshold;
+    private boolean payAttention;
+
     public void setMe(Position p) {
         this.me = p;
     }
@@ -109,13 +114,22 @@ public class MainController {
         me = player.getPosition();
         previous = player.getPrevious();
         area = player.getArea();
+        areaSize = (area.getX2()-area.getX1() + 1) * (area.getY2() - area.getY1() + 1);
+        if (areaSize < 81) {
+            // we are not in the center of map
+            goToCenter = true;
+        } else {
 
+        }
         board = body.getBoard();
         if (size == null) {
             size = board.getSize(); // this won't change
         }
         walls = board.getWalls(); // visible area walls, not all the walls
-
+        if (walls.length / areaSize <= crowdedThreshold) {
+            // we are possibly in the dead end
+            payAttention = true;
+        }
         invaders = body.getInvaders();
         players = body.getPlayers();
         for (Invader i: invaders) {
@@ -124,7 +138,6 @@ public class MainController {
 
         nearestEnemy = findNearestPlayer(players);
         nearestInvader = findNearestInvader(invaders);
-
 
         //info("In the visible area we have {} invaders. ", invaders.length);
         //log.info("In the visible area we have {} players. ", players.length);
@@ -148,29 +161,34 @@ public class MainController {
         if (fire) { // we can fire!
             // killing players first
             if (nearestEnemy != null) {
-                if (isAligned(nearestEnemy)) {
+                if (isAligned(nearestEnemy)) { // cannot shoot enemy, we choose to move to gain point
                     if (!someWallIsBlocking(nearestEnemy)) {
                         return new Move(fireAt(nearestEnemy));
                     } else { // cannot fire enemy, so we search invader
                         if (nearestInvader != null) {
-                            return shootInvader();
+                            return shootOrCrashInvader();
                         } else {
-                            return moveAtWill();
+                            return new Move(moveTowardsPlayer(new Position(nearestEnemy.getX(), nearestEnemy.getY())));
                         }
                     }
                 } else {
-                    String howToMove = moveTowardsPlayer(nearestEnemy);
-                    if (howToMove.contains(WAIT)) {
-                        // we cannot move towards one direction
-                        String dontGo = howToMove.split(" ")[1];
-                        allFourDirections.remove(dontGo);
-                        return moveAtWill();
+                    if (nearestInvader != null) {
+                        return shootOrCrashInvader();
                     } else {
-                        return new Move(howToMove);
+                        String howToMove = moveTowardsPlayer(nearestEnemy);
+                        if (howToMove.contains(WAIT)) {
+                            // we cannot move towards one direction
+                            String dontGo = howToMove.split(" ")[1];
+                            allFourDirections.remove(dontGo);
+                            return moveAtWill();
+                        } else {
+                            return new Move(howToMove);
+                        }
                     }
+
                 }
             } else if (nearestInvader != null) {
-                return shootInvader();
+                return shootOrCrashInvader();
             } else {
                 return moveAtWill();
             }
@@ -179,7 +197,7 @@ public class MainController {
         }
     }
 
-    private Move shootInvader() {
+    private Move shootOrCrashInvader() {
         if (isAligned(nearestInvader.getPosition())) {
             if (nearestInvader.getNeutral()) {
                 if (isNeighbor(nearestInvader.getPosition())) {
@@ -241,9 +259,11 @@ public class MainController {
             int another = 0;
             Invader nearest = null;
             for (int i=shortestDimension.length-1; i>=1; i--) {
-                nearest = visibleInvaders[i];
-                visibleInvaders[i] = visibleInvaders[i-1];
-                visibleInvaders[i-1] = nearest;
+                if (shortestDimension[i] < shortestDimension[i-1]) {
+                    nearest = visibleInvaders[i];
+                    visibleInvaders[i] = visibleInvaders[i - 1];
+                    visibleInvaders[i - 1] = nearest;
+                }
             }
             return visibleInvaders[0];
         }
