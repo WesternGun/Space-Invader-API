@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -112,7 +113,7 @@ public class MainController {
         allFourDirections.add(ML);
         allFourDirections.add(MU);
         allFourDirections.add(MD);
-
+        // reset moveToCenter, getOut TODO
         game = body.getGame();
         player = body.getPlayer();
         fire = player.getFire();
@@ -304,8 +305,12 @@ public class MainController {
 
             // get the shortest of x and y axis distance, and order again; get the shortest one as [0]
             Invader nearest = null;
+            int shortest = 0;
             for (int i=shortestDimension.length-1; i>=1; i--) {
                 if (shortestDimension[i] < shortestDimension[i-1]) {
+                    shortest = shortestDimension[i];
+                    shortestDimension[i] = shortestDimension[i - 1];
+                    shortestDimension[i-1] = shortest;
                     nearest = visibleInvaders[i];
                     visibleInvaders[i] = visibleInvaders[i - 1];
                     visibleInvaders[i - 1] = nearest;
@@ -323,14 +328,7 @@ public class MainController {
         // 1. don't move towards wall, and pay attention to the possible direction
         // cross-join these two lists
         ArrayList<String> possibleMovesInWall = checkNearWalls();
-        ArrayList<String> possibleMoves = new ArrayList<>();
-
-        for (String d: allFourDirections) {
-            for (String ds: possibleMovesInWall)
-            if (d.equals(ds)) {
-                possibleMoves.add(d);
-            }
-        }
+        ArrayList<String> possibleMoves = allFourDirections.stream().filter(possibleMovesInWall::contains).collect(Collectors.toCollection(ArrayList::new));
 
         if (possibleMoves.size() == 1) {
             return new Move(deadEnd.getSolution());
