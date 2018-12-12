@@ -1,0 +1,2395 @@
+[
+  {
+    "id": 334427,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 12,
+          "x": 11
+        },
+        "previous": {
+          "y": 12,
+          "x": 11
+        },
+        "area": {
+          "y1": 8,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 15,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:54 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334431,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 11
+        },
+        "previous": {
+          "y": 12,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 14,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:55 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "right"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334435,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 12
+        },
+        "previous": {
+          "y": 11,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 8,
+          "y2": 14,
+          "x2": 16
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          },
+          {
+            "y": 14,
+            "x": 16
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 13,
+          "neutral": true
+        },
+        {
+          "y": 13,
+          "x": 16,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:55 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334439,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 11
+        },
+        "previous": {
+          "y": 11,
+          "x": 12
+        },
+        "area": {
+          "y1": 7,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 12,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 9,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:56 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334444,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 10
+        },
+        "previous": {
+          "y": 11,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 6,
+          "y2": 14,
+          "x2": 14
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 6,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 8,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:58 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334447,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 9
+        },
+        "previous": {
+          "y": 11,
+          "x": 10
+        },
+        "area": {
+          "y1": 7,
+          "x1": 5,
+          "y2": 14,
+          "x2": 13
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 10,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 7,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:59 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334452,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 8
+        },
+        "previous": {
+          "y": 11,
+          "x": 9
+        },
+        "area": {
+          "y1": 7,
+          "x1": 4,
+          "y2": 14,
+          "x2": 12
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 8,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:59 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334457,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 10,
+          "x": 8
+        },
+        "previous": {
+          "y": 11,
+          "x": 8
+        },
+        "area": {
+          "y1": 6,
+          "x1": 4,
+          "y2": 14,
+          "x2": 12
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 11,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 10,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 12,
+          "x": 12,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 5,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:01 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334461,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 10,
+          "x": 7
+        },
+        "previous": {
+          "y": 10,
+          "x": 8
+        },
+        "area": {
+          "y1": 6,
+          "x1": 3,
+          "y2": 14,
+          "x2": 11
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 3
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 12,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 10,
+          "neutral": true
+        },
+        {
+          "y": 12,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:02 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334465,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 9,
+          "x": 7
+        },
+        "previous": {
+          "y": 10,
+          "x": 7
+        },
+        "area": {
+          "y1": 5,
+          "x1": 3,
+          "y2": 13,
+          "x2": 11
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 5,
+            "x": 3
+          },
+          {
+            "y": 5,
+            "x": 4
+          },
+          {
+            "y": 5,
+            "x": 5
+          },
+          {
+            "y": 5,
+            "x": 6
+          },
+          {
+            "y": 5,
+            "x": 7
+          },
+          {
+            "y": 5,
+            "x": 8
+          },
+          {
+            "y": 5,
+            "x": 9
+          },
+          {
+            "y": 5,
+            "x": 10
+          },
+          {
+            "y": 5,
+            "x": 11
+          },
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 13,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 11,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:02 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "down"
+    },
+    "errorMessage": null
+  }
+][
+  {
+    "id": 334427,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 12,
+          "x": 11
+        },
+        "previous": {
+          "y": 12,
+          "x": 11
+        },
+        "area": {
+          "y1": 8,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 15,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:54 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334431,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 11
+        },
+        "previous": {
+          "y": 12,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 14,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:55 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "right"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334435,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 12
+        },
+        "previous": {
+          "y": 11,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 8,
+          "y2": 14,
+          "x2": 16
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          },
+          {
+            "y": 14,
+            "x": 16
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 13,
+          "neutral": true
+        },
+        {
+          "y": 13,
+          "x": 16,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 10,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:55 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334439,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 11
+        },
+        "previous": {
+          "y": 11,
+          "x": 12
+        },
+        "area": {
+          "y1": 7,
+          "x1": 7,
+          "y2": 14,
+          "x2": 15
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          },
+          {
+            "y": 14,
+            "x": 15
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 12,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 9,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:56 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334444,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 10
+        },
+        "previous": {
+          "y": 11,
+          "x": 11
+        },
+        "area": {
+          "y1": 7,
+          "x1": 6,
+          "y2": 14,
+          "x2": 14
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          },
+          {
+            "y": 14,
+            "x": 14
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 6,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 8,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:58 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334447,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 9
+        },
+        "previous": {
+          "y": 11,
+          "x": 10
+        },
+        "area": {
+          "y1": 7,
+          "x1": 5,
+          "y2": 14,
+          "x2": 13
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          },
+          {
+            "y": 14,
+            "x": 13
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 10,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 7,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:59 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334452,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 11,
+          "x": 8
+        },
+        "previous": {
+          "y": 11,
+          "x": 9
+        },
+        "area": {
+          "y1": 7,
+          "x1": 4,
+          "y2": 14,
+          "x2": 12
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 10,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 9,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 8,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:51:59 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334457,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 10,
+          "x": 8
+        },
+        "previous": {
+          "y": 11,
+          "x": 8
+        },
+        "area": {
+          "y1": 6,
+          "x1": 4,
+          "y2": 14,
+          "x2": 12
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          },
+          {
+            "y": 14,
+            "x": 12
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 11,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 10,
+          "x": 7,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 12,
+          "x": 12,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 5,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:01 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "left"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334461,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 10,
+          "x": 7
+        },
+        "previous": {
+          "y": 10,
+          "x": 8
+        },
+        "area": {
+          "y1": 6,
+          "x1": 3,
+          "y2": 14,
+          "x2": 11
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 3
+          },
+          {
+            "y": 14,
+            "x": 4
+          },
+          {
+            "y": 14,
+            "x": 5
+          },
+          {
+            "y": 14,
+            "x": 6
+          },
+          {
+            "y": 14,
+            "x": 7
+          },
+          {
+            "y": 14,
+            "x": 8
+          },
+          {
+            "y": 14,
+            "x": 9
+          },
+          {
+            "y": 14,
+            "x": 10
+          },
+          {
+            "y": 14,
+            "x": 11
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 12,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 10,
+          "neutral": true
+        },
+        {
+          "y": 12,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 7,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:02 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "up"
+    },
+    "errorMessage": null
+  },
+  {
+    "id": 334465,
+    "gameUuid": "db0d826f-abad-4c37-90eb-6db2a007ee58",
+    "playerUuid": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+    "requestUrl": "https:\/\/space-invader-api-westerngun.herokuapp.com\/\/move",
+    "requestHeaders": {
+      "Content-Type": "application\/json; charset=UTF-8"
+    },
+    "requestBody": {
+      "game": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d"
+      },
+      "player": {
+        "id": "f630fcc9-bd2c-43a4-a422-009228531d1d",
+        "name": "WesternGun",
+        "position": {
+          "y": 9,
+          "x": 7
+        },
+        "previous": {
+          "y": 10,
+          "x": 7
+        },
+        "area": {
+          "y1": 5,
+          "x1": 3,
+          "y2": 13,
+          "x2": 11
+        },
+        "fire": true
+      },
+      "board": {
+        "size": {
+          "height": 15,
+          "width": 30
+        },
+        "walls": [
+          {
+            "y": 5,
+            "x": 3
+          },
+          {
+            "y": 5,
+            "x": 4
+          },
+          {
+            "y": 5,
+            "x": 5
+          },
+          {
+            "y": 5,
+            "x": 6
+          },
+          {
+            "y": 5,
+            "x": 7
+          },
+          {
+            "y": 5,
+            "x": 8
+          },
+          {
+            "y": 5,
+            "x": 9
+          },
+          {
+            "y": 5,
+            "x": 10
+          },
+          {
+            "y": 5,
+            "x": 11
+          },
+          {
+            "y": 6,
+            "x": 4
+          },
+          {
+            "y": 7,
+            "x": 4
+          },
+          {
+            "y": 9,
+            "x": 4
+          },
+          {
+            "y": 10,
+            "x": 4
+          },
+          {
+            "y": 11,
+            "x": 4
+          }
+        ]
+      },
+      "players": [],
+      "invaders": [
+        {
+          "y": 13,
+          "x": 9,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 11,
+          "x": 11,
+          "neutral": true
+        },
+        {
+          "y": 8,
+          "x": 6,
+          "neutral": true
+        }
+      ]
+    },
+    "responseCode": 200,
+    "responseHeaders": [
+      "HTTP\/1.1 200 ",
+      "Server: Cowboy",
+      "Connection: keep-alive",
+      "Content-Type: application\/json;charset=UTF-8",
+      "Transfer-Encoding: chunked",
+      "Date: Tue, 11 Dec 2018 20:52:02 GMT",
+      "Via: 1.1 vegur"
+    ],
+    "responseBody": {
+      "move": "down"
+    },
+    "errorMessage": null
+  }
+]

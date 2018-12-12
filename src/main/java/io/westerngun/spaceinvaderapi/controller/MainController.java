@@ -63,10 +63,15 @@ public class MainController {
 
     private int areaSize;
     private boolean goToCenter;
+    private boolean getOut; // if we are surrounded by too many walls and needs to get out
 
     @Value("${crowd.threshold}")
     private double crowdedThreshold;
-    private boolean payAttention;
+
+    private String[] path;
+    private String moveToCenterX; // left or right
+    private String moveToCenterY; // up or down
+    private Position centerPoint;
 
     public void setMe(Position p) {
         this.me = p;
@@ -115,21 +120,33 @@ public class MainController {
         previous = player.getPrevious();
         area = player.getArea();
         areaSize = (area.getX2()-area.getX1() + 1) * (area.getY2() - area.getY1() + 1);
-        if (areaSize < 81) {
-            // we are not in the center of map
-            goToCenter = true;
-        } else {
-
-        }
         board = body.getBoard();
         if (size == null) {
             size = board.getSize(); // this won't change
+            centerPoint = new Position(size.getWidth() / 2, size.getHeight() / 2);
         }
+        if (me.getX() <= centerPoint.getX()) {
+            moveToCenterX = MR;
+        } else {
+            moveToCenterX = ML;
+        }
+        if (me.getY() <= centerPoint.getY()) {
+            moveToCenterY = MD;
+        } else {
+            moveToCenterY = MU;
+        }
+
         walls = board.getWalls(); // visible area walls, not all the walls
-        if (walls.length / areaSize <= crowdedThreshold) {
-            // we are possibly in the dead end
-            payAttention = true;
+        if (areaSize < 81) {
+            // we are not in the center of map
+            goToCenter = true;
         }
+        if (walls.length / 81 >= crowdedThreshold) {
+            // too many walls, we get out
+            getOut = true;
+        }
+
+
         invaders = body.getInvaders();
         players = body.getPlayers();
         for (Invader i: invaders) {
@@ -152,7 +169,8 @@ public class MainController {
         }
 
         // remember:
-        // death penalty: 1 round stop, but next round, you can fire again at revival! -25p
+        // death penalty: 6 rounds death, -25p, revive first round cannot fire
+        // you could revive and dead again, when others collide with you, so when you revive, first thing is to run!
         // reload: 7 rounds (round 1 fire -> round 8 fire again)
         // neutral invader: 5 rounds (round 1 yes, round 6 no) only kill by touching(?)
         // bullet: extends 4 blocks, instant kill; can evade; invader cannot
@@ -180,7 +198,7 @@ public class MainController {
                             // we cannot move towards one direction
                             String dontGo = howToMove.split(" ")[1];
                             allFourDirections.remove(dontGo);
-                            return moveAtWill();
+                            return moveToCenter();
                         } else {
                             return new Move(howToMove);
                         }
@@ -190,12 +208,14 @@ public class MainController {
             } else if (nearestInvader != null) {
                 return shootOrCrashInvader();
             } else {
-                return moveAtWill();
+                return moveToCenter();
             }
         } else {
-            return moveAtWill();
+            return moveToCenter();
         }
     }
+
+
 
     private Move shootOrCrashInvader() {
         if (isAligned(nearestInvader.getPosition())) {
@@ -203,17 +223,17 @@ public class MainController {
                 if (isNeighbor(nearestInvader.getPosition())) {
                     return new Move(moveTowards(nearestInvader.getPosition()));
                 } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
-                    return new Move(fireAt(nearestInvader.getPosition())); // TODO: neutral can fire?
+                    return new Move(fireAt(nearestInvader.getPosition())); // NEUTRAL can fire too
                 } else {
                     // cannot fire because wall is blocking, so we begin to move
-                    return moveAtWill();
+                    return moveToCenter();
                 }
             } else {
                 return new Move(fireAt(nearestInvader.getPosition()));
             }
         } else {
             // invader not aligned, move at will
-            return moveAtWill();
+            return moveToCenter();
         }
     }
 
@@ -232,12 +252,39 @@ public class MainController {
             }
 
             // get the shortest of x and y axis distance, and order again; get the shortest one as [0]
-            int another = 0;
             Position nearest = null;
+            int shortest = 0;
             for (int i=shortestDimension.length-1; i>=1; i--) {
-                nearest = visiblePlayers[i];
-                visiblePlayers[i] = visiblePlayers[i-1];
-                visiblePlayers[i-1] = nearest;
+                if (shortestDimension[i] < shortestDimension[i-1]) {
+                    shortest = shortestDimension[i];
+                    shortestDimension[i] = shortestDimension[i - 1];
+                    shortestDimension[i-1] = shortest;
+
+                    nearest = visiblePlayers[i];
+                    visiblePlayers[i] = visiblePlayers[i - 1];
+                    visiblePlayers[i - 1] = nearest;
+                }
+            }
+            Position firstNearest = visiblePlayers[0];
+            int shortestDistance = shortestDimension[0];
+            // if first 2 have same distance: choose to move depending on moveToCenter true/false
+            Position[] restVisibles = Arrays.copyOfRange(visiblePlayers, 1, visiblePlayers.length);
+            int[] shortestDimension2 = Arrays.copyOfRange(shortestDimension, 1, shortestDimension.length);
+            nearest = null;
+            shortest = 0;
+            for (int i=restVisibles.length-1; i>=1; i--) {
+                if (shortestDimension2[i] < shortestDimension2[i-1]) {
+                    shortest = shortestDimension2[i];
+                    shortestDimension2[i] = shortestDimension2[i - 1];
+                    shortestDimension2[i-1] = shortest;
+                    nearest = restVisibles[i];
+                    restVisibles[i] = restVisibles[i - 1];
+                    restVisibles[i - 1] = nearest;
+                }
+            }
+            if (shortestDistance == shortestDimension2[0]) {
+                Position secondsNearest = restVisibles[0];
+                // TODO coordinate moveToCenter and moveTosecondNearest
             }
             return visiblePlayers[0];
         }
@@ -256,7 +303,6 @@ public class MainController {
             }
 
             // get the shortest of x and y axis distance, and order again; get the shortest one as [0]
-            int another = 0;
             Invader nearest = null;
             for (int i=shortestDimension.length-1; i>=1; i--) {
                 if (shortestDimension[i] < shortestDimension[i-1]) {
@@ -273,7 +319,7 @@ public class MainController {
     /**
      * Move at will(but preferablly go to the center and avoid walls.
      */
-    public Move moveAtWill() {
+    public Move moveToCenter() {
         // 1. don't move towards wall, and pay attention to the possible direction
         // cross-join these two lists
         ArrayList<String> possibleMovesInWall = checkNearWalls();
@@ -507,62 +553,33 @@ public class MainController {
     /**
      * Move towards a player to shot, on the axis where me and the other has the shortest distance.
      * If distance is even number, save to move; if is 1, just wait; if is 3: move too;
-     * @param player the other player
+     * @param position the other player
      * @return
      */
-    private String moveTowardsPlayer(Position player) {
-        int xDistance = Math.abs(me.getX() - player.getX());
-        int yDistance = Math.abs(me.getY() - player.getY());
+    private String moveTowardsPlayer(Position position) {
+        int xDistance = Math.abs(me.getX() - position.getX());
+        int yDistance = Math.abs(me.getY() - position.getY());
         if (xDistance < yDistance) {
             // move on x axis
-            if (xDistance % 2 == 0) { // 2, 4
+            if (xDistance != 1) {
                 // we are save to move
-                if (me.getX() < player.getX()) {
+                if (isAtLeft(position)) {
                     return MR;
                 } else {
                     return ML;
                 }
             } else {
-                if (xDistance == 1) {
-                    // do nothing, wait; but calculate the possible move
-                    if (isAtLeft(player)) {
-                        return WAIT + " " + MR;
-                    } else {
-                        return WAIT + " " + ML;
-                    }
-
-                } else { // xdistance == 3, save to move
-                    // TODO: observe the enemy's strategy
-                    if (isAtLeft(player)) {
-                        return MR;
-                    } else {
-                        return ML;
-                    }
-                }
+                return WAIT;
             }
         } else { // move on y axis
-            if (yDistance % 2 == 0) {
-                if (me.getY() < player.getY()) {
+            if (yDistance != 1) {
+                if (isHigherThan(position)) {
                     return MD;
                 } else {
                     return MU;
                 }
             } else {
-                if (yDistance == 1) {
-                    // do nothing, wait; but calculate the possible move
-                    if (isHigherThan(player)) {
-                        return WAIT + " " + MD;
-                    } else {
-                        return WAIT + " " + MU;
-                    }
-                } else { // ydistance == 3, save to move
-                    // TODO: observe the enemy's strategy
-                    if (isHigherThan(player)) {
-                        return MD;
-                    } else {
-                        return MU;
-                    }
-                }
+                return WAIT;
             }
         }
     }
