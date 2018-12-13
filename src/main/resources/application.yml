@@ -24,3 +24,7 @@ move:
 
 crowd:
   threshold: 0.33 # percentage where we think the ship is surrounded and crowded
+
+invader:
+  density:
+    threshold: 4 # number of invaders in the area that makes me stay here

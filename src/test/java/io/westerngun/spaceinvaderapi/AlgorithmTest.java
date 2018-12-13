@@ -5,6 +5,7 @@ import io.westerngun.spaceinvaderapi.dto.DeadEnd;
 import io.westerngun.spaceinvaderapi.dto.Player;
 import io.westerngun.spaceinvaderapi.dto.Position;
 import io.westerngun.spaceinvaderapi.dto.Wall;
+import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,10 +45,10 @@ public class AlgorithmTest {
         Position p2= new Position(5, 2);
         Position p3 = new Position(4, 0);
         controller.setMe(new Position(4, 4));
-        Player[] players = new Player[]{new Player(p1), new Player(p2), new Player(p3)};
-        Player nearest = controller.findNearestPlayer(players);
+        Position[] players = new Position[]{p1, p2, p3};
+        Position nearest = controller.findNearestPlayer(players);
 
-        Assert.assertEquals(new Player(p3), nearest);
+        Assert.assertEquals(p3, nearest);
     }
 
     @Test
@@ -85,5 +86,12 @@ public class AlgorithmTest {
         // then
         Assert.assertEquals("left", result);
 
+    }
+
+    @Test
+    public void testPositionEquals() {
+        Position p1 = new Position(3, 2);
+        Position p2 = new Position(3, 2);
+        Assert.assertTrue(p1.equals(p2));
     }
 }
