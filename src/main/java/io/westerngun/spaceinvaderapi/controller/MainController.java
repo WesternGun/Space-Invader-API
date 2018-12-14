@@ -12,7 +12,9 @@ import io.westerngun.spaceinvaderapi.dto.Player;
 import io.westerngun.spaceinvaderapi.dto.Position;
 import io.westerngun.spaceinvaderapi.dto.Size;
 import io.westerngun.spaceinvaderapi.dto.Wall;
+import javafx.geometry.Pos;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.PortableServer.POA;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,7 +80,13 @@ public class MainController {
     private Set<Position> pathHistory = new HashSet<>();
     private Set<Position[]> allDeadends = new HashSet<>();
 
-    private List<String> evade1 = new ArrayList<String>();
+    private Set<String> evadeAlignedEnemy = new HashSet<>();
+    private Set<String> evadeCornerEnemy = new HashSet<>();
+    private Set<String> evadeInvaderEnemyAxis = new HashSet<>();
+    private Set<String> evadeInvader = new HashSet<>();
+    private Set<String> evadeWalls = new HashSet<>();
+
+
     @Value("${crowd.threshold}")
     private double crowdedThreshold;
 
@@ -91,7 +99,7 @@ public class MainController {
     private String moveToCenterX; // left or right
     private String moveToCenterY; // up or down
     private Position centerPoint;
-
+    private int reloadCounter; // 0-7
     private Set<Position> allWalls;
 
     public void setMe(Position p) {
@@ -197,16 +205,11 @@ public class MainController {
 
 
         players = body.getPlayers();
-
-        // if we may be dead by collision, we must move!
-        if (previous.equals(me) && deadByCollision()) {
-            mustMove = true; // we must get moving!
-        } else {
-            mustMove = false;
-        }
-
         nearestEnemy = findNearestPlayer(players);
         nearestInvader = findNearestInvader(invaders);
+
+
+
 
         // now we are good to make decisions.
         // if we must move because of collision: we move!
@@ -238,19 +241,61 @@ public class MainController {
         // after all, move:
         //      towards farest wall
         //      don't repeat yourself, don't go towards deadend
+        //      go to center, go to where most invaders are
+        //
 
-
+        // if we may be dead by collision, we must move!
+        if (previous.equals(me) && deadByCollision()) {
+            mustMove = true; // we must get moving!
+        } else {
+            mustMove = false;
+        }
 
 
         if (oneShotKillMore(nearestEnemy, nearestInvader)) {
-            if (fire) {
+            if (fire && !someWallIsBlocking(me, nearestEnemy) && !someWallIsBlocking(nearestEnemy, nearestInvader.getPosition())) {
                 return new Move(fireAt(nearestEnemy));
             } else {
-                evade1.addAll(Arrays.stream(evadeAxis(nearestEnemy, nearestInvader.getPosition())).collect(Collectors.toCollection(ArrayList::new)));
+                evadeAlignedEnemy.addAll(evadeAxis(nearestEnemy, nearestInvader.getPosition()));
+            }
+        } else {
+            List<Position> cornerEnemies = getCornerEnemies();
+            if (cornerEnemies.size() > 0) {
+                evadeCornerEnemy.addAll(calculateEvadePositions(cornerEnemies)); // cross get all possible evade path
             }
         }
-        //info("In the visible area we have {} invaders. ", invaders.length);
-        //log.info("In the visible area we have {} players. ", players.length);
+
+        List<Invader> alignedInvaders = getAlignedInvaders();
+        if (alignedInvaders.size() > 0) {
+            Invader aligned = alignedInvaders.get(0);
+            if (isNeighbor(aligned.getPosition())) {
+                if (aligned.getNeutral()) {
+                    Position anotherToEvade = invaderPossibleTarget(aligned);
+                    if (anotherToEvade != null) {
+                        evadeInvaderEnemyAxis.addAll(evadeAxis(aligned.getPosition(), anotherToEvade));
+                    } else {
+                        return new Move(moveTowards(aligned.getPosition()));
+                    }
+                } else if (fire) {
+                    return new Move(fireAt(aligned.getPosition()));
+                } else {
+                    evadeInvader.addAll(evadePosition(aligned.getPosition()));
+                }
+            } else { // aligned invader is not neighbor
+                if (fire) {
+                    if (!someWallIsBlocking(me, aligned.getPosition())) {
+                        return new Move(fireAt(aligned.getPosition()));
+                    }
+                }
+            }
+        } else {
+            // not aligned invader, check corner
+            List<Position> cornerInvaders = getCornerInvaders();
+            if (cornerInvaders.size() > 0) {
+                evadeInvader.addAll(calculateEvadePositions(cornerInvaders));
+            }
+
+        }
 
 
         // remember:
@@ -261,58 +306,113 @@ public class MainController {
         // bullet: extends 4 blocks, instant kill; can evade; invader cannot
         // if we stick to one place to kill one, we get 75p every 2 rounds; but at first we should move to get in touch with others
         //
-        if (fire) { // we can fire!
-            // killing players first
-            if (nearestEnemy != null) {
-                if (isAligned(nearestEnemy)) { // cannot shoot enemy, we choose to move to gain point
-                    if (!someWallIsBlocking(nearestEnemy)) {
-                        return new Move(fireAt(nearestEnemy));
-                    } else { // cannot fire enemy, so we search invader
-                        if (nearestInvader != null) {
-                            return shootOrCrashInvader();
-                        } else {
-                            return new Move(moveTowardsPlayer(new Position(nearestEnemy.getX(), nearestEnemy.getY())));
-                        }
-                    }
-                } else {
-                    if (nearestInvader != null) {
-                        return shootOrCrashInvader();
-                    } else {
-                        String howToMove = moveTowardsPlayer(nearestEnemy);
-                        if (howToMove.contains(WAIT)) {
-                            // we cannot move towards one direction
-                            String dontGo = howToMove.split(" ")[1];
-                            allFourDirections.remove(dontGo);
-                            return moveToCenter();
-                        } else {
-                            return new Move(howToMove);
-                        }
-                    }
 
-                }
-            } else if (nearestInvader != null) {
-                return shootOrCrashInvader();
-            } else {
-                return moveToCenter();
-            }
+
+    }
+
+    private List<String> calculateEvadePositions(List<Position> positions) {
+        if (positions.size() == 1) {
+            return evadePosition(positions.get(0));
         } else {
-            return moveToCenter();
+            List<String> initDirs = evadePosition(positions.get(0));
+
+            for (int i=1; i<positions.size(); i++) {
+                List<String> thisDirs = evadePosition(positions.get(i));
+                initDirs = initDirs.stream().filter(thisDirs::contains).collect(Collectors.toList());
+            }
+            return initDirs;
         }
+    }
+
+
+    private List<Position> getCornerInvaders() {
+        return Arrays.stream(invaders).filter(i -> isAtCornerOf(me, i.getPosition())).map(Invader::getPosition).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * Cannot wait!
+     * @param p
+     * @return
+     */
+    private List<String> evadePosition(Position p) {
+        List<String> directions = new ArrayList<String>();
+        if (isHigherThan(me, p)) {
+            directions.add(MU);
+        } else if (isLowerThan(me, p)) {
+            directions.add(MD);
+        }
+        if (isAtLeft(me, p)) {
+            directions.add(ML);
+        } else if (isAtRight(me, p)) {
+            directions.add(MR);
+        }
+        return directions;
+    }
+    private Position invaderPossibleTarget(Invader invader) {
+        for (Position p: players) {
+            if (isHorizontalAligned(invader.getPosition(), p) || isVerticalAligned(invader.getPosition(), p)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    private List<Position> getCornerEnemies() {
+        List<Position> corners = new ArrayList<>();
+        for (Position p: players) {
+            if (isAtCornerOf(me, p)) {
+                corners.add(p);
+            }
+        }
+        return corners;
+    }
+
+    private List<Invader> getAlignedInvaders() {
+        List<Invader> aligned = new ArrayList<>();
+        for (Invader i: invaders) {
+            if (isHorizontalAligned(me, i.getPosition()) || isVerticalAligned(me, i.getPosition())) {
+                aligned.add(i);
+            }
+        }
+        return aligned;
+    }
+    private List<String> getCornerEscapePath(Position corner) {
+        ArrayList<String> directions = new ArrayList<>();
+        if (isHigherThan(me, corner) && isAtLeft(me, corner)) {
+            directions.add(MU); directions.add(ML);
+        } else if (isHigherThan(me, corner) && isAtRight(me, corner)) {
+            directions.add(MU); directions.add(MR);
+        } else if (isLowerThan(me, corner) && isAtLeft(me, corner)) {
+            directions.add(MD); directions.add(ML);
+        } else if (isLowerThan(me, corner) && isAtRight(me, corner)) {
+            directions.add(MD); directions.add(MR);
+        }
+        directions.add(WAIT);
+        return directions;
+    }
+
+    private boolean isAtCornerOf(Position p1, Position p2) {
+        return Math.abs(p1.getX() - p2.getX()) == 1 && Math.abs(p1.getY() - p2.getY()) == 1;
     }
 
     /**
      * Evade one axis marked by two positions.
+     * Cannot wait!!
      * @param p1
      * @param p2
      * @return
      */
-    private String[] evadeAxis(Position p1, Position p2) {
+    private Set<String> evadeAxis(Position p1, Position p2) {
+        Set<String> directions = new HashSet<>();
+
         if (p1.getX() == p2.getX()) {
-            return new String[]{MR, ML};
+            directions.add(MR);
+            directions.add(ML);
         } else if (p1.getY() == p2.getY()) {
-            return new String[]{MU, MD};
+            directions.add(MU);
+            directions.add(MD);
         }
-        return new String[]{WAIT};
+        return directions;
     }
     private Position[] calculateDeadends(Set<Position> allWalls) {
         return new Position[]{}; // TODO
@@ -327,12 +427,12 @@ public class MainController {
     }
 
     private boolean oneShotKillMore(Position nearestEnemy, Invader nearestInvader) {
-        if (isYAligned(me, nearestEnemy) && isYAligned(me, nearestInvader.getPosition())) {
+        if (isVerticalAligned(me, nearestEnemy) && isVerticalAligned(me, nearestInvader.getPosition())) {
             if (isHigherThan(me, nearestEnemy) && isHigherThan(nearestEnemy, nearestInvader.getPosition())
                 || isLowerThan(me, nearestEnemy) && isLowerThan(nearestEnemy, nearestInvader.getPosition()))  {
                 return true;
             }
-        } else if (isXAligned(me, nearestEnemy) && isXAligned(me, nearestInvader.getPosition())) {
+        } else if (isHorizontalAligned(me, nearestEnemy) && isHorizontalAligned(me, nearestInvader.getPosition())) {
             if (isAtLeft(me, nearestEnemy) && isAtLeft(nearestEnemy, nearestInvader.getPosition())
                 || isAtRight(me, nearestEnemy) && isAtRight(nearestEnemy, nearestInvader.getPosition())) {
                 return true;
@@ -341,11 +441,11 @@ public class MainController {
         return false;
     }
 
-    private boolean isXAligned(Position p1, Position p2) {
+    private boolean isHorizontalAligned(Position p1, Position p2) {
         return p1.getY() == p2.getY();
     }
 
-    private boolean isYAligned(Position p1, Position p2) {
+    private boolean isVerticalAligned(Position p1, Position p2) {
         return p1.getX() == p2.getX();
     }
 
@@ -369,7 +469,7 @@ public class MainController {
             if (nearestInvader.getNeutral()) {
                 if (isNeighbor(nearestInvader.getPosition())) {
                     return new Move(moveTowards(nearestInvader.getPosition()));
-                } else if (!someWallIsBlocking(nearestInvader.getPosition())) {
+                } else if (!someWallIsBlocking(me, nearestInvader.getPosition())) {
                     return new Move(fireAt(nearestInvader.getPosition())); // NEUTRAL can fire too
                 } else {
                     // cannot fire because wall is blocking, so we begin to move
@@ -589,37 +689,61 @@ public class MainController {
         return (ArrayList)possibleMoves;
     }
 
+    private List<String> checkFarestWalls() {
+        List<Position> leftRow = new ArrayList<>();
+        Position newPosition = null;
+        for (int i=area.getX1(); i<=me.getX(); i++) {
+            newPosition = new Position(i, me.getY())
+            if (!Arrays.asList(walls).contains(newPosition)) {
+                leftRow.add(newPosition);
+            }
+        }
+        List<Position> rightRow = new ArrayList<>();
+        for (int i=me.getX()+1; i<=area.getX2(); i++) {
+            newPosition = new Position(i, me.getY());
+            if (!Arrays.asList(walls).contains(newPosition)) {
+                rightRow.add(newPosition);
+            }
+        }
+        List<Position> topCol = new ArrayList<>();
+        for (int i=area.getY1(); i<=me.getY(); i++) {
+            newPosition = new Position(me.getX(), i);
+            if (!Arrays.asList(walls).contains(newPosition)) {
+                topCol.add(newPosition);
+            }
+        }
+        List<Position> botCol = new ArrayList<>();
+        for (int i=me.getY()+1; i<=area.getY2(); i++) {
+            newPosition = new Position(me.getX(), i);
+            if (!Arrays.asList(walls).contains(newPosition)) {
+                botCol.add(newPosition);
+            }
+        }
+
+
+    }
     /**
      * Check if any wall is blocking me and the other position.
      * Only check when is aligned; if not, make no sense.
-     * @param position
-     * @return
      */
-    public boolean someWallIsBlocking(Position position) {
-        if (me.getY() == position.getY()) { // horizontally aligned
-            Position[] xFromMeToOther = new Position[Math.abs(position.getX() - me.getX())-1];
-            for (int i=0; i<xFromMeToOther.length; i++) {
-                xFromMeToOther[i] = new Position(Math.min(position.getX(), me.getX()) + 1 + i, me.getY());
-            }
+    public boolean someWallIsBlocking(Position p1, Position p2) {
+        if (p1.getX() == p2.getX()) {
             for (Position w: walls) {
-                if (Arrays.asList(xFromMeToOther).contains(w)) {
+                if (isVerticalAligned(w, p1) && between(w.getY(), p1.getY(), p2.getY())) {
                     return true;
                 }
             }
             return false;
-        } else if (me.getX() == position.getX()) { // vertically aligned
-            Position[] yFromMeToOther = new Position[Math.abs(position.getY() - me.getY())-1];
-            for (int i=0; i<yFromMeToOther.length; i++) {
-                yFromMeToOther[i] = new Position(me.getX(), Math.min(position.getY(), me.getY()) + 1 + i);
-            }
+        } else if (p1.getY() == p2.getY()) {
             for (Position w: walls) {
-                if (Arrays.asList(yFromMeToOther).contains(w)) {
+                if (isHorizontalAligned(w, p1) && between(w.getX(), p1.getX(), p2.getX())) {
                     return true;
                 }
             }
+            return false;
+        } else {
             return false;
         }
-        return false;
     }
 
 
@@ -632,6 +756,15 @@ public class MainController {
         return (me.getX() - other.getX() == 1 || me.getX() - other.getX() == -1 || me.getY() - other.getY() == 1 || me.getY() - other.getY() == -1);
     }
 
+    private boolean between(int i, int a, int b) {
+        if (a < b) {
+            return i > a && i < b;
+        } else if (a==b) {
+            return false;
+        } else {
+            return i < a && i > b;
+        }
+    }
     /**
      * If two positions are at diagonally distance of squr(2).
      * @param other the second position
@@ -647,7 +780,7 @@ public class MainController {
      * @return if they are aligned
      */
     private boolean isAligned(Position other) {
-        return (me.getX() == other.getX() || me.getY() == other.getY());
+        return (isHorizontalAligned(me, other) || isVerticalAligned(me, other));
     }
 
     /**
@@ -656,7 +789,7 @@ public class MainController {
      * @return at which position I should fire
      */
     private String fireAt(Position enemy) {
-        if (me.getY() == enemy.getY()) {
+        if (isHorizontalAligned(me, enemy)) {
             if (me.getX() < enemy.getX()) {
                 return FR;
             } else {
@@ -678,7 +811,7 @@ public class MainController {
      * @return at which position I should fire
      */
     private String moveTowards(Position neutral_invader) {
-        if (me.getY() == neutral_invader.getY()) {
+        if (isHorizontalAligned(me, neutral_invader)) {
             if (me.getX() < neutral_invader.getX()) {
                 return MR;
             } else {

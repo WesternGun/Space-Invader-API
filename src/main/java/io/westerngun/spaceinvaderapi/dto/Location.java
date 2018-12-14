@@ -17,6 +17,6 @@ public class Location implements Serializable {
     private boolean visited;
 
     public void tryLocation() {
-        
+
     }
 }
