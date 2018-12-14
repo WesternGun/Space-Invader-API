@@ -812,39 +812,49 @@ public class MainController {
         }
 
         // decreasing order
-        int[] allDistances = new int[]{leftDis, rightDis, topDis, botDis};
-        Arrays.asList(allDistances).sort(Collections.reverseOrder());
+        List<Integer> allDistances = new ArrayList<>();
+        allDistances.add(leftDis);
+        allDistances.add(rightDis);
+        allDistances.add(topDis);
+        allDistances.add(botDis);
+        allDistances.sort(Collections.reverseOrder());
         List<String> results = new ArrayList<>();
-        if (allDistances[0] == allDistances[1]) { // we at most take two
-            if (allDistances[0] == leftDis) {
+        if (allDistances.get(0).equals(allDistances.get(1))) { // we at most take two
+            if (allDistances.get(0).equals(leftDis)) {
                 results.add(ML);
-            } else if (allDistances[0] == rightDis) {
+            }
+            if (allDistances.get(0).equals(rightDis)) {
                 results.add(MR);
-            } else if (allDistances[0] == topDis) {
-
+            }
+            if (allDistances.get(0).equals(topDis)) {
                 results.add(MU);
-            } else if (allDistances[0] == botDis) {
+            }
+            if (allDistances.get(0).equals(botDis)) {
                 results.add(MD);
             }
-            if (allDistances[1] == leftDis) {
+            if (allDistances.get(1).equals(leftDis)) {
                 results.add(ML);
-            } else if (allDistances[1] == rightDis) {
+            }
+            if (allDistances.get(1).equals(rightDis)) {
                 results.add(MR);
-            } else if (allDistances[1] == topDis) {
-
+            }
+            if (allDistances.get(1).equals(topDis)) {
                 results.add(MU);
-            } else if (allDistances[1] == botDis) {
+            }
+            if (allDistances.get(1).equals(botDis)) {
                 results.add(MD);
             }
         } else {
-            if (allDistances[0] == leftDis) {
+            if (allDistances.get(0).equals(leftDis)) {
                 results.add(ML);
-            } else if (allDistances[0] == rightDis) {
+            }
+            if (allDistances.get(0).equals(rightDis)) {
                 results.add(MR);
-            } else if (allDistances[0] == topDis) {
-
+            }
+            if (allDistances.get(0).equals(topDis)) {
                 results.add(MU);
-            } else if (allDistances[0] == botDis) {
+            }
+            if (allDistances.get(0).equals(botDis)) {
                 results.add(MD);
             }
         }
