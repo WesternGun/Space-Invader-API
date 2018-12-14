@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -74,9 +75,10 @@ public class MainController {
     private boolean invaderNumIncrease;
     private boolean searchNextArea;
 
-    private List<Position> pathHistory = new ArrayList<>();
+    private Set<Position> pathHistory = new HashSet<>();
+    private Set<Position[]> allDeadends = new HashSet<>();
 
-
+    private List<String> evade1 = new ArrayList<String>();
     @Value("${crowd.threshold}")
     private double crowdedThreshold;
 
@@ -125,136 +127,227 @@ public class MainController {
     @RequestMapping(value = "/move", method = RequestMethod.POST)
     public Move move(@RequestBody Body body) {
         log.info("Received JSON: {}", body);
-//        //log.info("We are performing: {}", MR);
-//        allFourDirections = new ArrayList<>();
-//        allFourDirections.add(MR);
-//        allFourDirections.add(ML);
-//        allFourDirections.add(MU);
-//        allFourDirections.add(MD);
-//        // reset moveToCenter, getOut TODO
-//        game = body.getGame();
-//        player = body.getPlayer();
-//        fire = player.getFire();
+        //log.info("We are performing: {}", MR);
+        allFourDirections = new ArrayList<>();
+        allFourDirections.add(MR);
+        allFourDirections.add(ML);
+        allFourDirections.add(MU);
+        allFourDirections.add(MD);
+        // reset moveToCenter, getOut TODO
+        game = body.getGame();
+        player = body.getPlayer();
+        fire = player.getFire();
 
-//        me = player.getPosition();
-//        pathHistory.add(me); // go back: remove last element, me TODO
+        me = player.getPosition();
+        pathHistory.add(me); // go back: remove last element, me TODO
 
-//        previous = player.getPrevious();
-//        area = player.getArea();
-//        areaSize = (area.getX2()-area.getX1() + 1) * (area.getY2() - area.getY1() + 1);
-//        board = body.getBoard();
-//        if (size == null) {
-//            size = board.getSize(); // this won't change
-//            centerPoint = new Position(size.getWidth() / 2, size.getHeight() / 2);
-//        }
-//        if (me.getX() <= centerPoint.getX()) {
-//            moveToCenterX = MR;
-//        } else {
-//            moveToCenterX = ML;
-//        }
-//        if (me.getY() <= centerPoint.getY()) {
-//            moveToCenterY = MD;
-//        } else {
-//            moveToCenterY = MU;
-//        }
+        previous = player.getPrevious();
+        area = player.getArea();
+        areaSize = (area.getX2()-area.getX1() + 1) * (area.getY2() - area.getY1() + 1);
+        board = body.getBoard();
+        if (size == null) {
+            size = board.getSize(); // this won't change
+            centerPoint = new Position(size.getWidth() / 2, size.getHeight() / 2);
+        }
+        if (me.getX() <= centerPoint.getX()) {
+            moveToCenterX = MR;
+        } else {
+            moveToCenterX = ML;
+        }
+        if (me.getY() <= centerPoint.getY()) {
+            moveToCenterY = MD;
+        } else {
+            moveToCenterY = MU;
+        }
 
-//        walls = board.getWalls(); // visible area walls, not all the walls
-//        if (areaSize < 81) {
-//            // we are not in the center of map
-//            goToCenter = true;
-//        }
-//        if (walls.length / 81 >= crowdedThreshold) {
-//            // too many walls, we get out
-//            getOut = true;
-//        }
+        walls = board.getWalls(); // visible area walls, not all the walls
+        allWalls.addAll(Arrays.stream(walls).collect(Collectors.toCollection(HashSet::new)));
+        allDeadends.add(calculateDeadends(allWalls));
 
 
-//        invaders = body.getInvaders();
-//        for (Invader i: invaders) {
-//            i.setPosition(new Position(i.getX(), i.getY()));
-//        }
-//        if (invaders.length >= maxNumInvader) {
-//            maxNumInvader = invaders.length;
-//            invaderNumIncrease = true; // we can stay here
-//        }
-//        if (invaders.length < maxNumInvader) {
-//            invaderNumIncrease = false; // we may back up to last area, searchNextArea may be false; TODO
-//        }
-//        if (maxNumInvader >= invaderDensity) {
-//            stayInArea = true;
-//        }
-//        players = body.getPlayers();
+        if (areaSize < 81) {
+            // we are not in the center of map
+            goToCenter = true;
+        } else {
+            goToCenter = false;
+        }
+        if (walls.length / 81 >= crowdedThreshold) {
+            // too many walls, we get out
+            getOut = true;
+        } else {
+            getOut = false;
+        }
 
-//        // if we may be dead by collision, we must move!
-//        if (previous.equals(me) && !fire && deadByCollision()) {
-//            mustMove = true; // we must get moving!
-//        } else {
-//            mustMove = false;
-//        }
 
-//        nearestEnemy = findNearestPlayer(players);
-//        nearestInvader = findNearestInvader(invaders);
+        invaders = body.getInvaders();
+        for (Invader i: invaders) {
+            i.setPosition(new Position(i.getX(), i.getY()));
+        }
+        if (invaders.length >= maxNumInvader) {
+            maxNumInvader = invaders.length;
+            invaderNumIncrease = true; // we can stay here
+        } else {
+            invaderNumIncrease = false; // we may back up to last area, searchNextArea may be false; TODO
+        }
+        if (invaders.length >= invaderDensity) {
+            stayInArea = true;
+        } else {
+            stayInArea = false;
+        }
 
-//        //info("In the visible area we have {} invaders. ", invaders.length);
-//        //log.info("In the visible area we have {} players. ", players.length);
 
-//        // calculate if we are dead/blocked. (necessary?)
-//        if (me.equals(previous)) {
-//            stopWatch ++; // we have stopped for 1 round;
-//            //log.info("We may be shot, do something!");
-//            doSomething();
-//        } else {
-//            stopWatch = 0; // clear
-//        }
+        players = body.getPlayers();
 
-//        // remember:
-//        // death penalty: 6 rounds death, -25p, revive first round cannot fire
-//        // you could revive and dead again, when others collide with you, so when you revive, first thing is to run!
-//        // reload: 7 rounds (round 1 fire -> round 8 fire again)
-//        // neutral invader: 5 rounds (round 1 yes, round 6 no) only kill by touching(?)
-//        // bullet: extends 4 blocks, instant kill; can evade; invader cannot
-//        // if we stick to one place to kill one, we get 75p every 2 rounds; but at first we should move to get in touch with others
-//        //
-//        if (fire) { // we can fire!
-//            // killing players first
-//            if (nearestEnemy != null) {
-//                if (isAligned(nearestEnemy)) { // cannot shoot enemy, we choose to move to gain point
-//                    if (!someWallIsBlocking(nearestEnemy)) {
-//                        return new Move(fireAt(nearestEnemy));
-//                    } else { // cannot fire enemy, so we search invader
-//                        if (nearestInvader != null) {
-//                            return shootOrCrashInvader();
-//                        } else {
-//                            return new Move(moveTowardsPlayer(new Position(nearestEnemy.getX(), nearestEnemy.getY())));
-//                        }
-//                    }
-//                } else {
-//                    if (nearestInvader != null) {
-//                        return shootOrCrashInvader();
-//                    } else {
-//                        String howToMove = moveTowardsPlayer(nearestEnemy);
-//                        if (howToMove.contains(WAIT)) {
-//                            // we cannot move towards one direction
-//                            String dontGo = howToMove.split(" ")[1];
-//                            allFourDirections.remove(dontGo);
-//                            return moveToCenter();
-//                        } else {
-//                            return new Move(howToMove);
-//                        }
-//                    }
+        // if we may be dead by collision, we must move!
+        if (previous.equals(me) && deadByCollision()) {
+            mustMove = true; // we must get moving!
+        } else {
+            mustMove = false;
+        }
 
-//                }
-//            } else if (nearestInvader != null) {
-//                return shootOrCrashInvader();
-//            } else {
-//                return moveToCenter();
-//            }
-//        } else {
-//            return moveToCenter();
-//        }
-        return new Move(WAIT);
+        nearestEnemy = findNearestPlayer(players);
+        nearestInvader = findNearestInvader(invaders);
+
+        // now we are good to make decisions.
+        // if we must move because of collision: we move!
+        // if not: we evade enemy, we never shoot until they are aligned with another invader!
+        //     if aligned with enemy and at least one invader:
+        //          yes: check if we can kill more than one thing
+        //              yes: if we can fire:
+        //                  yes: fire!
+        //                  no: we evade axis
+    //                  no: we evade
+        //          no: check if we have corner enemy:
+        //              yes: (wait or escapeEnemy)
+        //              no: we check aligned invader:
+        //                  yes: if neighbor and neutral:
+        //                      yes: check if oneShotKillMore
+        //                          yes: if we can fire:
+        //                              yes: we fire
+        //                              no: we evadeAxis
+        //                          no: check if it is aligned with another player(L letter align)
+        //                              yes: we evadeInvader
+        //                              no: we crash
+        //                      no: if we can fire:
+        //                          yes: we fire
+        //                          no: check if it is neutral
+        //                              yes: we move towards
+        //                              no: we move towards nearest axis
+        //                  no: we check corner invader, check all; and collect possible evade steps, or just wait
+
+        // after all, move:
+        //      towards farest wall
+        //      don't repeat yourself, don't go towards deadend
+
+
+
+
+        if (oneShotKillMore(nearestEnemy, nearestInvader)) {
+            if (fire) {
+                return new Move(fireAt(nearestEnemy));
+            } else {
+                evade1.addAll(Arrays.stream(evadeAxis(nearestEnemy, nearestInvader.getPosition())).collect(Collectors.toCollection(ArrayList::new)));
+            }
+        }
+        //info("In the visible area we have {} invaders. ", invaders.length);
+        //log.info("In the visible area we have {} players. ", players.length);
+
+
+        // remember:
+        // death penalty: 6 rounds death, -25p, revive first round cannot fire
+        // you could revive and dead again, when others collide with you, so when you revive, first thing is to run!
+        // reload: 7 rounds (round 1 fire -> round 8 fire again)
+        // neutral invader: 5 rounds (round 1 yes, round 6 no) only kill by touching(?)
+        // bullet: extends 4 blocks, instant kill; can evade; invader cannot
+        // if we stick to one place to kill one, we get 75p every 2 rounds; but at first we should move to get in touch with others
+        //
+        if (fire) { // we can fire!
+            // killing players first
+            if (nearestEnemy != null) {
+                if (isAligned(nearestEnemy)) { // cannot shoot enemy, we choose to move to gain point
+                    if (!someWallIsBlocking(nearestEnemy)) {
+                        return new Move(fireAt(nearestEnemy));
+                    } else { // cannot fire enemy, so we search invader
+                        if (nearestInvader != null) {
+                            return shootOrCrashInvader();
+                        } else {
+                            return new Move(moveTowardsPlayer(new Position(nearestEnemy.getX(), nearestEnemy.getY())));
+                        }
+                    }
+                } else {
+                    if (nearestInvader != null) {
+                        return shootOrCrashInvader();
+                    } else {
+                        String howToMove = moveTowardsPlayer(nearestEnemy);
+                        if (howToMove.contains(WAIT)) {
+                            // we cannot move towards one direction
+                            String dontGo = howToMove.split(" ")[1];
+                            allFourDirections.remove(dontGo);
+                            return moveToCenter();
+                        } else {
+                            return new Move(howToMove);
+                        }
+                    }
+
+                }
+            } else if (nearestInvader != null) {
+                return shootOrCrashInvader();
+            } else {
+                return moveToCenter();
+            }
+        } else {
+            return moveToCenter();
+        }
     }
 
+    /**
+     * Evade one axis marked by two positions.
+     * @param p1
+     * @param p2
+     * @return
+     */
+    private String[] evadeAxis(Position p1, Position p2) {
+        if (p1.getX() == p2.getX()) {
+            return new String[]{MR, ML};
+        } else if (p1.getY() == p2.getY()) {
+            return new String[]{MU, MD};
+        }
+        return new String[]{WAIT};
+    }
+    private Position[] calculateDeadends(Set<Position> allWalls) {
+        return new Position[]{}; // TODO
+    }
+
+    private boolean isXAxisNeighbor(Position p1, Position p2) {
+        return Math.abs(p1.getX() - p2.getX()) == 1;
+    }
+
+    private boolean isYAxisNeighbor(Position p1, Position p2) {
+        return Math.abs(p1.getY() - p2.getY()) == 1;
+    }
+
+    private boolean oneShotKillMore(Position nearestEnemy, Invader nearestInvader) {
+        if (isYAligned(me, nearestEnemy) && isYAligned(me, nearestInvader.getPosition())) {
+            if (isHigherThan(me, nearestEnemy) && isHigherThan(nearestEnemy, nearestInvader.getPosition())
+                || isLowerThan(me, nearestEnemy) && isLowerThan(nearestEnemy, nearestInvader.getPosition()))  {
+                return true;
+            }
+        } else if (isXAligned(me, nearestEnemy) && isXAligned(me, nearestInvader.getPosition())) {
+            if (isAtLeft(me, nearestEnemy) && isAtLeft(nearestEnemy, nearestInvader.getPosition())
+                || isAtRight(me, nearestEnemy) && isAtRight(nearestEnemy, nearestInvader.getPosition())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isXAligned(Position p1, Position p2) {
+        return p1.getY() == p2.getY();
+    }
+
+    private boolean isYAligned(Position p1, Position p2) {
+        return p1.getX() == p2.getX();
+    }
 
     /**
      * Check if me and some player is at same location.
@@ -614,7 +707,7 @@ public class MainController {
             // move on x axis
             if (xDistance != 1) {
                 // we are save to move
-                if (isAtLeft(position)) {
+                if (isAtLeft(me, position)) {
                     return MR;
                 } else {
                     return ML;
@@ -624,7 +717,7 @@ public class MainController {
             }
         } else { // move on y axis
             if (yDistance != 1) {
-                if (isHigherThan(position)) {
+                if (isHigherThan(me, position)) {
                     return MD;
                 } else {
                     return MU;
@@ -643,29 +736,25 @@ public class MainController {
 
     }
 
-    private boolean isHigherThan(Position player) {
-        return me.getY() < player.getY();
+    private boolean isHigherThan(Position p1, Position p2) {
+        return p1.getY() < p2.getY();
     }
 
-    private boolean isLowerThen(Position player) {
-        return me.getY() > player.getY();
-    }
-
-    /**
-     * If my position is at left of enemy
-     * @param player
-     * @return
-     */
-    private boolean isAtLeft(Position player) {
-        return me.getX() < player.getX();
+    private boolean isLowerThan(Position p1, Position p2) {
+        return p1.getY() > p2.getY();
     }
 
     /**
-     * If my position is at right of enemy
-     * @param player
-     * @return
+     * If p1 is at left of p2
      */
-    private boolean isAtRight(Position player) {
-        return me.getX() > player.getX();
+    private boolean isAtLeft(Position p1, Position p2) {
+        return p1.getX() < p2.getX();
+    }
+
+    /**
+     * If p1 is at right of p2
+     */
+    private boolean isAtRight(Position p1, Position p2) {
+        return p1.getX() > p2.getX();
     }
 }

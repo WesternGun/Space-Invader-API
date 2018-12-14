@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -93,5 +94,11 @@ public class AlgorithmTest {
         Position p1 = new Position(3, 2);
         Position p2 = new Position(3, 2);
         Assert.assertTrue(p1.equals(p2));
+    }
+
+    @Test
+    public void testStreamArrayToList() {
+        List<String> newList = Arrays.stream(new String[]{"one", "two", "three"}).collect(Collectors.toCollection(ArrayList::new));
+        Assert.assertEquals("ArrayList", newList.getClass().getSimpleName());
     }
 }
