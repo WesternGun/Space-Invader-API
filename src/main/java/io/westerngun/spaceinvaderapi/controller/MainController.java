@@ -101,7 +101,7 @@ public class MainController {
     private Set<String> allMoveToCenter = new HashSet<>();
     private Position centerPoint;
     private int reloadCounter; // 0-7
-    private Set<Position> allWalls;
+    private Set<Position> allWalls = new HashSet<>();
 
     public void setMe(Position p) {
         this.me = p;
