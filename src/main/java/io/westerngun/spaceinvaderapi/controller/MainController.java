@@ -12,9 +12,7 @@ import io.westerngun.spaceinvaderapi.dto.Player;
 import io.westerngun.spaceinvaderapi.dto.Position;
 import io.westerngun.spaceinvaderapi.dto.Size;
 import io.westerngun.spaceinvaderapi.dto.Wall;
-import javafx.geometry.Pos;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.PortableServer.POA;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -98,6 +98,7 @@ public class MainController {
     private String[] path;
     private String moveToCenterX; // left or right
     private String moveToCenterY; // up or down
+    private Set<String> allMoveToCenter;
     private Position centerPoint;
     private int reloadCounter; // 0-7
     private Set<Position> allWalls;
@@ -167,6 +168,9 @@ public class MainController {
         } else {
             moveToCenterY = MU;
         }
+
+        allMoveToCenter.add(moveToCenterX);
+        allMoveToCenter.add(moveToCenterY);
 
         walls = board.getWalls(); // visible area walls, not all the walls
         allWalls.addAll(Arrays.stream(walls).collect(Collectors.toCollection(HashSet::new)));
@@ -307,6 +311,76 @@ public class MainController {
         // if we stick to one place to kill one, we get 75p every 2 rounds; but at first we should move to get in touch with others
         //
 
+        return moveWithinBoundaries();
+    }
+
+    private Move moveWithinBoundaries() {
+        Set<String> possibleMoves = new HashSet<>();
+        if (!mustMove) {
+            possibleMoves.add(WAIT);
+        }
+        if (goToCenter) { // if at last we are in center, we can also move to them
+            possibleMoves.add(moveToCenterX);
+            possibleMoves.add(moveToCenterY);
+        }
+
+        if (evadeInvaderEnemyAxis.size() > 0) {
+            possibleMoves.remove(WAIT);
+            possibleMoves.addAll(evadeAlignedEnemy.stream().filter(checkFarthestWalls()::contains).filter(allMoveToCenter::contains).collect(Collectors.toSet()));
+            if (possibleMoves.size() > 0) {
+                return new Move(pickRandomMoveFromSet(possibleMoves));
+            } else {
+                return new Move(pickRandomMoveFromSet(evadeInvaderEnemyAxis));
+            }
+        } else if (evadeAlignedEnemy.size() > 0) {
+            possibleMoves.remove(WAIT); // TODO test when absent
+            possibleMoves.addAll(evadeAlignedEnemy.stream().filter(checkFarthestWalls()::contains).filter(allMoveToCenter::contains).collect(Collectors.toSet()));
+            if (possibleMoves.size() > 0) {
+                return new Move(pickRandomMoveFromSet(possibleMoves));
+            } else {
+                return new Move(pickRandomMoveFromSet(evadeAlignedEnemy));
+            }
+        } else if (evadeCornerEnemy.size() > 0) {
+            possibleMoves.addAll(evadeCornerEnemy.stream().filter(checkFarthestWalls()::contains).filter(allMoveToCenter::contains).collect(Collectors.toSet()));
+            if (possibleMoves.size() > 0) {
+                return new Move(pickRandomMoveFromSet(possibleMoves));
+            } else {
+                return new Move(pickRandomMoveFromSet(evadeCornerEnemy));
+            }
+        } else if (evadeInvader.size() > 0) {
+            possibleMoves.addAll(evadeInvader.stream().filter(checkFarthestWalls()::contains).filter(allMoveToCenter::contains).collect(Collectors.toSet()));
+            if (possibleMoves.size() > 0) {
+                return new Move(pickRandomMoveFromSet(possibleMoves));
+            } else {
+                return new Move(pickRandomMoveFromSet(evadeInvader));
+            }
+        } else {
+            possibleMoves.addAll(checkFarthestWalls().stream().filter(allMoveToCenter::contains).collect(Collectors.toSet()));
+            if (possibleMoves.size() > 0) {
+                return new Move(pickRandomMoveFromSet(possibleMoves));
+            } else {
+                List<String> goFarther = checkFarthestWalls();
+                return new Move(goFarther.get(randomNumber(0, goFarther.size())));
+            }
+        }
+
+    }
+
+
+    private String pickRandomMoveFromSet(Set<String> set) {
+        int index = 0;
+        int target = randomNumber(0, set.size());
+        Iterator<String> it = set.iterator();
+        String move = "";
+        while (it.hasNext()) {
+            move = it.next();
+            if (index == target) {
+                return move;
+            } else {
+                index++;
+            }
+        }
+        return move;
 
     }
 
@@ -689,38 +763,93 @@ public class MainController {
         return (ArrayList)possibleMoves;
     }
 
-    private List<String> checkFarestWalls() {
+    private List<String> checkFarthestWalls() {
         List<Position> leftRow = new ArrayList<>();
         Position newPosition = null;
-        for (int i=area.getX1(); i<=me.getX(); i++) {
-            newPosition = new Position(i, me.getY())
-            if (!Arrays.asList(walls).contains(newPosition)) {
-                leftRow.add(newPosition);
+        int leftDis = me.getX() - area.getX1();
+        int rightDis = area.getX2() - me.getX();
+        int topDis = me.getY() - area.getY1();
+        int botDis = area.getY2() - me.getY();
+        Position leftLimit = new Position(area.getX1(), me.getY());
+        Position rightLimit = new Position(area.getX2(), me.getY());
+        Position topLimit = new Position(me.getX(), area.getY1());
+        Position botLimit = new Position(me.getX(), area.getY2());
+        for (int i=me.getX()-1; i>=area.getX1(); i--) {
+            newPosition = new Position(i, me.getY());
+            if (Arrays.asList(walls).contains(newPosition)) {
+                leftDis = me.getX() - i;
+                leftLimit = newPosition;
+                break;
             }
         }
-        List<Position> rightRow = new ArrayList<>();
         for (int i=me.getX()+1; i<=area.getX2(); i++) {
             newPosition = new Position(i, me.getY());
-            if (!Arrays.asList(walls).contains(newPosition)) {
-                rightRow.add(newPosition);
+            if (Arrays.asList(walls).contains(newPosition)) {
+                rightDis = i - me.getX();
+                rightLimit = newPosition;
+                break;
             }
         }
+
         List<Position> topCol = new ArrayList<>();
-        for (int i=area.getY1(); i<=me.getY(); i++) {
+        for (int i=me.getY()-1; i>=area.getY1(); i--) {
             newPosition = new Position(me.getX(), i);
-            if (!Arrays.asList(walls).contains(newPosition)) {
-                topCol.add(newPosition);
+            if (Arrays.asList(walls).contains(newPosition)) {
+                topDis = me.getY() - i;
+                topLimit = newPosition;
+                break;
             }
         }
+
         List<Position> botCol = new ArrayList<>();
         for (int i=me.getY()+1; i<=area.getY2(); i++) {
             newPosition = new Position(me.getX(), i);
-            if (!Arrays.asList(walls).contains(newPosition)) {
-                botCol.add(newPosition);
+            if (Arrays.asList(walls).contains(newPosition)) {
+                botDis = i - me.getY();
+                botLimit = newPosition;
+                break;
             }
         }
 
+        // decreasing order
+        int[] allDistances = new int[]{leftDis, rightDis, topDis, botDis};
+        Arrays.asList(allDistances).sort(Collections.reverseOrder());
+        List<String> results = new ArrayList<>();
+        if (allDistances[0] == allDistances[1]) { // we at most take two
+            if (allDistances[0] == leftDis) {
+                results.add(ML);
+            } else if (allDistances[0] == rightDis) {
+                results.add(MR);
+            } else if (allDistances[0] == topDis) {
 
+                results.add(MU);
+            } else if (allDistances[0] == botDis) {
+                results.add(MD);
+            }
+            if (allDistances[1] == leftDis) {
+                results.add(ML);
+            } else if (allDistances[1] == rightDis) {
+                results.add(MR);
+            } else if (allDistances[1] == topDis) {
+
+                results.add(MU);
+            } else if (allDistances[1] == botDis) {
+                results.add(MD);
+            }
+        } else {
+            if (allDistances[0] == leftDis) {
+                results.add(ML);
+            } else if (allDistances[0] == rightDis) {
+                results.add(MR);
+            } else if (allDistances[0] == topDis) {
+
+                results.add(MU);
+            } else if (allDistances[0] == botDis) {
+                results.add(MD);
+            }
+        }
+
+        return results;
     }
     /**
      * Check if any wall is blocking me and the other position.

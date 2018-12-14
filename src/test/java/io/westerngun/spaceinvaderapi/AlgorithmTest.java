@@ -129,12 +129,22 @@ public class AlgorithmTest {
         list1.add("two");
 
         List<String> list2 = new ArrayList<>();
-        list2.add("two");
-        list2.add("three");
+        //list2.add("two");
+        //list2.add("three");
 
         ArrayList retain = list1.stream().filter(list2::contains).collect(Collectors.toCollection(ArrayList::new));
 
-        Assert.assertEquals(1, retain.size());
-        Assert.assertEquals("two", retain.get(0));
+        Assert.assertEquals(0, retain.size());
+        //Assert.assertEquals("two", retain.get(0));
+    }
+
+    @Test
+    public void testRemoveNotPresent() {
+        List<String> list1 = new ArrayList<>();
+        list1.add("one");
+        list1.add("two");
+        list1.remove("three");
+
+        Assert.assertEquals(2, list1.size());
     }
 }
