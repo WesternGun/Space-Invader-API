@@ -17,8 +17,6 @@ public class Location implements Serializable {
     private boolean visited;
 
     public void tryLocation() {
-        for (Location l: possibilities) {
-            if (l.)
-        }
+        
     }
 }
