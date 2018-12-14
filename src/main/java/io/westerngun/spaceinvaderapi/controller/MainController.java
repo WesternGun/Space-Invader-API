@@ -98,7 +98,7 @@ public class MainController {
     private String[] path;
     private String moveToCenterX; // left or right
     private String moveToCenterY; // up or down
-    private Set<String> allMoveToCenter;
+    private Set<String> allMoveToCenter = new HashSet<>();
     private Position centerPoint;
     private int reloadCounter; // 0-7
     private Set<Position> allWalls;
