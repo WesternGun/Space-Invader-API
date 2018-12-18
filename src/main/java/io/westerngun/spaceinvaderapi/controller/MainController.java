@@ -311,6 +311,9 @@ public class MainController {
         // if we stick to one place to kill one, we get 75p every 2 rounds; but at first we should move to get in touch with others
         //
 
+
+
+        
         return moveWithinBoundaries();
     }
 
